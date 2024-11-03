@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export default class AuthCredential {
+export default class LoginCredential {
     email: string;
     password: string;
 

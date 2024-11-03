@@ -3,15 +3,15 @@ import { Field } from "@/components/ui/field";
 import { PasswordInput } from "@/components/ui/password-input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import AuthCredential from "@/models/AuthCredential";
+import LoginCredential from "@/models/LoginCredential";
 
 export default function LoginForm(): React.ReactElement {
     const {
         register,
         handleSubmit,
         formState: { errors, isValid },
-    } = useForm<AuthCredential>({
-        resolver: yupResolver(AuthCredential.validateSchema),
+    } = useForm<LoginCredential>({
+        resolver: yupResolver(LoginCredential.validateSchema),
         mode: "onChange",
     });
 
