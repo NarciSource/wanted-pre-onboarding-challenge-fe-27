@@ -6,9 +6,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import LoginCredential from "@/models/LoginCredential";
 import loginUser, { LoginError, LoginParameters, LoginResponse } from "@/api/loginApi";
 import { useMutation } from "@tanstack/react-query";
-
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm(): React.ReactElement {
+    const navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
@@ -29,6 +31,10 @@ export default function LoginForm(): React.ReactElement {
     });
 
     const onSubmit = handleSubmit(async (data) => {
+        if (localStorage["token"]) {
+            navigate("/");
+        }
+
         mutation.mutate(data);
     });
 
