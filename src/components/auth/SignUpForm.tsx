@@ -3,7 +3,7 @@ import { Field } from "@/components/ui/field";
 import { PasswordInput } from "@/components/ui/password-input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import SignUpCredential from "@/models/SignUpCredential";
+import SignUpCredential from "@/entities/SignUpCredential";
 import signUpUser, { SignUpError, SignUpParameters, SignUpResponse } from "@/api/signUpApi";
 import { useMutation } from "@tanstack/react-query";
 
