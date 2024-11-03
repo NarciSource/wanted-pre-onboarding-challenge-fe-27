@@ -4,6 +4,8 @@ import { Button, Input, Stack } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import TodoItem from "@/entities/TodoItem";
+import { useMutation } from "@tanstack/react-query";
+import createTodo, { TodoError, TodoItemResponse } from "@/api/createTodoApi";
 
 interface TodoParameters {
     title: string;
@@ -20,8 +22,15 @@ export default function TodoForm(): React.ReactElement {
         mode: "onChange",
     });
 
+    const { mutate } = useMutation<TodoItemResponse, TodoError, TodoParameters>({
+        mutationFn: createTodo,
+        onError: (error) => {
+            console.error("Todo 추가 실패", error);
+        },
+    });
+
     const onSubmit = handleSubmit((data) => {
-        console.log(data);
+        mutate(data);
     });
 
     return (
