@@ -4,7 +4,8 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import SignUpCredential from "@/models/SignUpCredential";
-import signUpUser from "@/api/signUpApi";
+import signUpUser, { SignUpError, SignUpParameters, SignUpResponse } from "@/api/signUpApi";
+import { useMutation } from "@tanstack/react-query";
 
 export default function SignUpForm(): React.ReactElement {
     const {
@@ -16,10 +17,18 @@ export default function SignUpForm(): React.ReactElement {
         mode: "onChange",
     });
 
-    const onSubmit = handleSubmit(async (data) => {
-        const { token } = await signUpUser(data);
+    const mutation = useMutation<SignUpResponse, SignUpError, SignUpParameters>({
+        mutationFn: signUpUser,
+        onSuccess: ({ token }) => {
+            localStorage["token"] = token;
+        },
+        onError: (error) => {
+            console.error("회원가입 실패", error);
+        },
+    });
 
-        localStorage["token"] = token;
+    const onSubmit = handleSubmit(async (data) => {
+        mutation.mutate(data);
     });
 
     return (
@@ -73,6 +82,8 @@ export default function SignUpForm(): React.ReactElement {
             >
                 제출
             </Button>
+
+            {mutation.error?.data.details}
         </form>
     );
 }

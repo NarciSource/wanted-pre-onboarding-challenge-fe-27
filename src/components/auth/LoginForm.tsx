@@ -4,7 +4,9 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import LoginCredential from "@/models/LoginCredential";
-import loginUser from "@/api/loginApi";
+import loginUser, { LoginError, LoginParameters, LoginResponse } from "@/api/loginApi";
+import { useMutation } from "@tanstack/react-query";
+
 
 export default function LoginForm(): React.ReactElement {
     const {
@@ -16,10 +18,18 @@ export default function LoginForm(): React.ReactElement {
         mode: "onChange",
     });
 
-    const onSubmit = handleSubmit(async (data) => {
-        const { token } = await loginUser(data);
+    const mutation = useMutation<LoginResponse, LoginError, LoginParameters>({
+        mutationFn: loginUser,
+        onSuccess: ({ token }) => {
+            localStorage["token"] = token;
+        },
+        onError: (error) => {
+            console.error("로그인 실패", error);
+        },
+    });
 
-        localStorage["token"] = token;
+    const onSubmit = handleSubmit(async (data) => {
+        mutation.mutate(data);
     });
 
     return (
@@ -60,6 +70,8 @@ export default function LoginForm(): React.ReactElement {
             >
                 제출
             </Button>
+
+            {mutation.error?.data.details}
         </form>
     );
 }
