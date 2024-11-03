@@ -2,14 +2,18 @@ import { Button, Input, Stack } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
 import { PasswordInput } from "@/components/ui/password-input";
 import { useForm } from "react-hook-form";
-import { AuthCredential } from "@/models/AuthCredential";
+import { yupResolver } from "@hookform/resolvers/yup";
+import AuthCredential from "@/models/AuthCredential";
 
 export default function LoginForm(): React.ReactElement {
     const {
         register,
         handleSubmit,
         formState: { errors, isValid },
-    } = useForm<AuthCredential>();
+    } = useForm<AuthCredential>({
+        resolver: yupResolver(AuthCredential.validateSchema),
+        mode: "onChange",
+    });
 
     const onSubmit = handleSubmit((data) => console.log(data));
 
@@ -25,7 +29,6 @@ export default function LoginForm(): React.ReactElement {
                     <Input
                         {...register("email", {
                             required: "이메일 입력해주세요",
-                            validate: (value) => value.includes("@") && value.includes("."),
                         })}
                     />
                 </Field>
@@ -39,7 +42,6 @@ export default function LoginForm(): React.ReactElement {
                     <PasswordInput
                         {...register("password", {
                             required: "비밀번호 입력해주세요",
-                            minLength: { value: 8, message: "최소 8자리 이상 필요합니다." },
                         })}
                     />
                 </Field>
