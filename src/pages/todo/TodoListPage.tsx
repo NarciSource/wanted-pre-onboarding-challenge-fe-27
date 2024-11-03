@@ -1,6 +1,6 @@
-import TodoCardList from "@/components/todo/TodoCardList";
+import TodoCardList from "@/components/todoList/TodoCardList";
 import React from "react";
 
-export default function TodoListPage(): React.ReactElement {
+export default function TodoPage(): React.ReactElement {
     return <TodoCardList />;
 }

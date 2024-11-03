@@ -1,7 +1,7 @@
 import { Box, For, Stack } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
 import React from "react";
-import TodoItemCard from "./TodoItemCard";
+import TodoItemCard from "./TodoCardItem";
 import { useQuery } from "@tanstack/react-query";
 import getTodoList, { TodoListError, TodoListHeader, TodoListResponse } from "@/api/todosApi";
 
