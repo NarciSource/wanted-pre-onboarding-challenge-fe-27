@@ -8,7 +8,7 @@ export default function LoginForm(): React.ReactElement {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isValid },
     } = useForm<AuthCredential>();
 
     const onSubmit = handleSubmit((data) => console.log(data));
@@ -22,7 +22,12 @@ export default function LoginForm(): React.ReactElement {
                     errorText={errors.email?.message}
                     required
                 >
-                    <Input {...register("email", { required: "이메일 입력해주세요" })} />
+                    <Input
+                        {...register("email", {
+                            required: "이메일 입력해주세요",
+                            validate: (value) => value.includes("@") && value.includes("."),
+                        })}
+                    />
                 </Field>
 
                 <Field
@@ -32,12 +37,21 @@ export default function LoginForm(): React.ReactElement {
                     required
                 >
                     <PasswordInput
-                        {...register("password", { required: "비밀번호 입력해주세요" })}
+                        {...register("password", {
+                            required: "비밀번호 입력해주세요",
+                            minLength: { value: 8, message: "최소 8자리 이상 필요합니다." },
+                        })}
                     />
                 </Field>
             </Stack>
 
-            <Button type="submit">제출</Button>
+            <Button
+                colorPalette="blue"
+                bg={{ base: "colorPalette.600", _dark: "colorPalette.400" }}
+                disabled={!isValid}
+            >
+                제출
+            </Button>
         </form>
     );
 }
