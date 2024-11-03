@@ -4,6 +4,7 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import SignUpCredential from "@/models/SignUpCredential";
+import signUpUser from "@/api/signUpApi";
 
 export default function SignUpForm(): React.ReactElement {
     const {
@@ -15,7 +16,11 @@ export default function SignUpForm(): React.ReactElement {
         mode: "onChange",
     });
 
-    const onSubmit = handleSubmit((data) => console.log(data));
+    const onSubmit = handleSubmit(async (data) => {
+        const { token } = await signUpUser(data);
+
+        localStorage["token"] = token;
+    });
 
     return (
         <form onSubmit={onSubmit}>
@@ -61,6 +66,7 @@ export default function SignUpForm(): React.ReactElement {
             </Stack>
 
             <Button
+                type="submit"
                 colorPalette="blue"
                 bg={{ base: "colorPalette.600", _dark: "colorPalette.400" }}
                 disabled={!isValid}
