@@ -1,17 +1,10 @@
 import axios from "axios";
+import { TodoItemResponse } from "./todoApi";
 
 const host = import.meta.env.VITE_API_HOST;
 
 export interface TodoListHeader {
     Authorization: string;
-}
-
-export interface TodoItemResponse {
-    title: string;
-    content: string;
-    id: string;
-    createdAt: string;
-    updatedAt: string;
 }
 
 export interface TodoListError {
@@ -29,6 +22,5 @@ export default async function getTodoList(headers: TodoListHeader) {
         headers: { ...headers },
     });
 
-    console.log(response.data.data)
     return response.data.data;
 }
