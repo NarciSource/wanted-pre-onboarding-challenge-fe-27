@@ -1,11 +1,12 @@
 import React from "react";
 
-import { Box, Flex, Link, Stack } from "@chakra-ui/react";
+import { Box, Flex, Link, Stack, Text } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 
 import Popover from "./Popover";
 import LoginFormLayout from "@/components/auth/LoginFormLayout";
 import SignUpFormLayout from "@/components/auth/SignUpFormLayout";
+import { FcTodoList } from "react-icons/fc";
 
 export default function Navbar(): React.ReactElement {
     return (
@@ -29,7 +30,8 @@ export default function Navbar(): React.ReactElement {
                         fontSize="5xl"
                         color={useColorModeValue("gray.800", "white")}
                     >
-                        todos
+                        <FcTodoList />
+                        <Text>todos</Text>
                     </Link>
                 </Flex>
 

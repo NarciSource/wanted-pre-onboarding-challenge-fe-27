@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useMutation } from "@tanstack/react-query";
-import { Box, Heading, Stack, Text } from "@chakra-ui/react";
+import { Heading, Stack } from "@chakra-ui/react";
 
 import { UserResponse, UserError } from "@/api/userApi";
 import loginUser, { LoginParameters } from "@/api/services/user/loginUser";
@@ -30,14 +30,10 @@ export default function LoginFormLayout(): React.ReactElement {
 
     return (
         <Stack>
-            <Heading as="h1">로그인</Heading>
+            <Heading as="h2">로그인</Heading>
 
             <LoginForm onSubmit={handleSubmit} />
             {mutation.error?.data.details}
-
-            <Box>
-                <Text>회원가입 하기</Text>
-            </Box>
         </Stack>
     );
 }

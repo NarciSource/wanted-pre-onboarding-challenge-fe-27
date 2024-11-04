@@ -30,7 +30,7 @@ export default function SignUpFormLayout(): React.ReactElement {
 
     return (
         <Stack>
-            <Heading as="h1">회원가입</Heading>
+            <Heading as="h2">회원가입</Heading>
 
             <SignUpForm onSubmit={handleSubmit} />
             {mutation.error?.data.details}

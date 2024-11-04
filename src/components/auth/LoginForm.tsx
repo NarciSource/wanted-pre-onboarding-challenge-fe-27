@@ -55,6 +55,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps): React.ReactElem
             <Button
                 type="submit"
                 colorPalette="blue"
+                mt={5}
                 bg={{ base: "colorPalette.600", _dark: "colorPalette.400" }}
                 disabled={!isValid}
             >
