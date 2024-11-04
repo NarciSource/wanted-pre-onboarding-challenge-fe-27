@@ -20,7 +20,7 @@ export default class TodoItem {
             id: Yup.string(),
             title: Yup.string().max(16, "제목은 최대 16자입니다.").required("제목은 필수입니다."),
             content: Yup.string()
-                .max(256, "내용은 최대 256자입니다.")
+                .max(1024, "내용은 최대 1024자입니다.")
                 .required("비밀번호는 필수입니다."),
         })
         .noUnknown(true);

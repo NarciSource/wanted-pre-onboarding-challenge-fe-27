@@ -3,8 +3,8 @@ import React from "react";
 import { Box, Flex } from "@chakra-ui/react";
 
 import CommonLayout from "@/components/layouts/CommonLayout";
-import LoginFormLayout from "../../components/auth/LoginFormLayout";
-import SignUpFormLayout from "../../components/auth/SignUpFormLayout";
+import LoginFormLayout from "@/components/auth/LoginFormLayout";
+import SignUpFormLayout from "@/components/auth/SignUpFormLayout";
 
 export default function AuthPage(): React.ReactElement {
     return (

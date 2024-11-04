@@ -80,6 +80,7 @@ export default function TodoForm({
                 >
                     <Textarea
                         placeholder="내용"
+                        minH="100px"
                         h="100%"
                         {...register("content", {
                             required: "내용을 입력해주세요",
