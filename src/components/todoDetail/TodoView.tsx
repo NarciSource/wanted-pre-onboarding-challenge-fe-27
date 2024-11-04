@@ -2,6 +2,9 @@ import React from "react";
 
 import {
     Box,
+    Flex,
+    Heading,
+    IconButton,
     PopoverArrow,
     PopoverBody,
     PopoverContent,
@@ -11,8 +14,8 @@ import {
     Stack,
     Text,
 } from "@chakra-ui/react";
-import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
+import { FaPencil } from "react-icons/fa6";
 
 import { TodoResponse } from "@/api/todoApi";
 import readTodo from "@/api/services/todo/readTodo";
@@ -34,7 +37,18 @@ export default function TodoView({ todoId }: { todoId: string }): React.ReactEle
                 <Box>
                     <PopoverRoot>
                         <PopoverTrigger asChild>
-                            <Button>ToDo 수정</Button>
+                            <Flex justify="flex-end">
+                                <IconButton
+                                    type="submit"
+                                    position="absolute"
+                                    mt={5}
+                                    colorPalette="blue"
+                                    size="sm"
+                                    bg={{ base: "colorPalette.600", _dark: "colorPalette.400" }}
+                                >
+                                    <FaPencil />
+                                </IconButton>
+                            </Flex>
                         </PopoverTrigger>
 
                         <PopoverContent>
@@ -49,11 +63,17 @@ export default function TodoView({ todoId }: { todoId: string }): React.ReactEle
                             </PopoverBody>
                         </PopoverContent>
                     </PopoverRoot>
-                    <Stack>
-                        <Text>{data.title}</Text>
-                        <Text>{data.createdAt}</Text>
-                        <Text>{data.updatedAt}</Text>
-                        <Text>{data.content}</Text>
+                    <Stack overflow="hidden" textOverflow="ellipsis">
+                        <Heading paddingTop={5}>{data.title}</Heading>
+
+                        <Text p={10}>{data.content}</Text>
+
+                        <Flex justify="flex-end">
+                            <Stack textStyle="xs">
+                                <Text>생성시간: {new Date(data.createdAt).toLocaleString()}</Text>
+                                <Text>수정시간: {new Date(data.updatedAt).toLocaleString()}</Text>
+                            </Stack>
+                        </Flex>
                     </Stack>
                 </Box>
             )}

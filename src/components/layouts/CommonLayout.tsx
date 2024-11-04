@@ -1,5 +1,7 @@
-import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
+
+import { Box, Flex } from "@chakra-ui/react";
+
 import Navbar from "./Navbar";
 
 interface CommonLayoutProps {
@@ -12,7 +14,7 @@ export default function CommonLayout({ children }: CommonLayoutProps): React.Rea
             <Flex justify="center">
                 <Navbar />
             </Flex>
-            <Box px={{ base: 4 }} pt="24" mx="auto" maxW="960px" minH="100vh" w="100%">
+            <Box px={{ base: 4 }} pt="24" paddingInline="15%" minH="100vh" w="100%">
                 {children}
             </Box>
         </div>

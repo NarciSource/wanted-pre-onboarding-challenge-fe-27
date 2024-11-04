@@ -3,11 +3,11 @@ import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Flex, IconButton, Input, Stack, Textarea } from "@chakra-ui/react";
+import { FaPushed } from "react-icons/fa6";
 
 import { Field } from "@/components/ui/field";
 import { TodoParameters } from "@/api/services/todo/updateTodo";
 import TodoItem from "@/entities/TodoItem";
-import { FaPushed } from "react-icons/fa6";
 
 interface TodoFormProps {
     id?: string;
