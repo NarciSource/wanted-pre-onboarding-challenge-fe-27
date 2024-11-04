@@ -7,7 +7,7 @@ export default function TodoPage(): React.ReactElement {
     return (
         <Flex>
             <TodoCardList />
-            <Outlet />
+            <Outlet /> {/* TodoDetailPage */}
         </Flex>
     );
 }
