@@ -33,13 +33,21 @@ export default function TodoForm({
         mode: "onChange",
     });
 
+    // 쿼리 캐시에 접근
+    // App.tsx에서 queryClient를 이미 생성했으므로 훅으로 접근
     const queryClient = useQueryClient();
 
     const { mutate } = useMutation<TodoItemResponse, TodoError, TodoParameters>({
         mutationFn: id ? updateTodo : createTodo,
         onSuccess: async () => {
+            // 쿼리 식별자로 재요청
             await queryClient.refetchQueries({
                 queryKey: ["todoList"],
+            });
+            // 여러 캐시 식별자를 요청
+            // queryKey의 배열은 && 임
+            await queryClient.refetchQueries({
+                queryKey: ["todoView"],
             });
         },
         onError: (error) => {
