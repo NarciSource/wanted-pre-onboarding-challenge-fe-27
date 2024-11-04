@@ -25,7 +25,12 @@ export default function TodoDelete({ todoId }: { todoId: string }) {
     };
 
     return (
-        <IconButton onClick={onClick} colorPalette="blue" rounded="full">
+        <IconButton
+            onClick={onClick}
+            colorPalette="blue"
+            size="sm"
+            bg={{ base: "colorPalette.600", _dark: "colorPalette.400" }}
+        >
             <MdDelete />
         </IconButton>
     );
