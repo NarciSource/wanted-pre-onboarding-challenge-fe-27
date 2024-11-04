@@ -24,7 +24,7 @@ export default function Popover({
                     {name}
                 </Button>
             </PopoverTrigger>
-            <PopoverContent>
+            <PopoverContent position="fixed" zIndex={99}>
                 <PopoverArrow />
                 <PopoverBody>{Component}</PopoverBody>
                 <PopoverCloseTrigger />
