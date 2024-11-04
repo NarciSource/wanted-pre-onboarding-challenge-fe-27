@@ -1,15 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import { Flex } from "@chakra-ui/react";
-
 import TodoCardList from "@/components/todoCard/TodoCardList";
+import CommonLayout from "@/components/layouts/CommonLayout";
 
 export default function TodoPage(): React.ReactElement {
     return (
-        <Flex>
+        <CommonLayout>
             <TodoCardList />
             <Outlet /> {/* TodoDetailPage */}
-        </Flex>
+        </CommonLayout>
     );
 }
