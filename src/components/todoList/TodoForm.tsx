@@ -4,7 +4,7 @@ import { Button, Input, Stack, Textarea } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import TodoItem from "@/entities/TodoItem";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import createTodo, { TodoError, TodoItemResponse } from "@/api/createTodoApi";
 import updateTodo from "@/api/updateTodoApi";
 
@@ -33,8 +33,15 @@ export default function TodoForm({
         mode: "onChange",
     });
 
+    const queryClient = useQueryClient();
+
     const { mutate } = useMutation<TodoItemResponse, TodoError, TodoParameters>({
         mutationFn: id ? updateTodo : createTodo,
+        onSuccess: async () => {
+            await queryClient.refetchQueries({
+                queryKey: ["todoList"],
+            });
+        },
         onError: (error) => {
             console.error("Todo 추가 실패", error);
         },
