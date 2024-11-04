@@ -16,7 +16,7 @@ import { useQuery } from "@tanstack/react-query";
 import { TodoError, TodoListResponse } from "@/api/todoApi";
 import readAllTodo from "@/api/services/todo/readAllTodo";
 import TodoItemCard from "./TodoCardItem";
-import TodoForm from "./TodoForm";
+import TodoLayout from "../todo/TodoLayout";
 
 export default function TodoCardList(): React.ReactElement {
     const { data } = useQuery<undefined, TodoError, TodoListResponse>({
@@ -36,7 +36,7 @@ export default function TodoCardList(): React.ReactElement {
                     <PopoverArrow />
                     <PopoverBody>
                         <PopoverTitle fontWeight="medium">ToDo 추가</PopoverTitle>
-                        <TodoForm />
+                        <TodoLayout />
                     </PopoverBody>
                 </PopoverContent>
             </PopoverRoot>

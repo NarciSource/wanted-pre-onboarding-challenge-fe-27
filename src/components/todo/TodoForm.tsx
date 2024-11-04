@@ -3,55 +3,31 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Input, Stack, Textarea } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { TodoError, TodoResponse } from "@/api/todoApi";
-import createTodo from "@/api/services/todo/createTodo";
-import updateTodo, { TodoParameters } from "@/api/services/todo/updateTodo";
+import { TodoParameters } from "@/api/services/todo/updateTodo";
 import TodoItem from "@/entities/TodoItem";
+
+interface TodoFormProps {
+    id?: string;
+    title?: string;
+    content?: string;
+    onSubmit: (data: TodoParameters) => void;
+}
 
 export default function TodoForm({
     id,
     title,
     content,
-}: {
-    id?: string;
-    title?: string;
-    content?: string;
-}): React.ReactElement {
+    onSubmit,
+}: TodoFormProps): React.ReactElement {
     const {
         register,
         handleSubmit,
         setValue,
         formState: { errors, isValid },
     } = useForm<TodoParameters>({
+        // 유효성 검사
         resolver: yupResolver(TodoItem.validateSchema),
         mode: "onChange",
-    });
-
-    // 쿼리 캐시에 접근
-    // App.tsx에서 queryClient를 이미 생성했으므로 훅으로 접근
-    const queryClient = useQueryClient();
-
-    const { mutate } = useMutation<TodoResponse, TodoError, TodoParameters>({
-        mutationFn: id ? updateTodo : createTodo,
-        onSuccess: async () => {
-            // 쿼리 식별자로 재요청
-            await queryClient.refetchQueries({
-                queryKey: ["todoList"],
-            });
-            // 여러 캐시 식별자를 요청
-            // queryKey의 배열은 && 임
-            await queryClient.refetchQueries({
-                queryKey: ["todoView"],
-            });
-        },
-        onError: (error) => {
-            console.error("Todo 추가 실패", error);
-        },
-    });
-
-    const onSubmit = handleSubmit((data) => {
-        mutate(data);
     });
 
     useEffect(() => {
@@ -67,7 +43,7 @@ export default function TodoForm({
     }, [id, title, content, setValue]);
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <Stack gap="4" align="flex-start" maxW="sm">
                 <Field
                     label="제목"
