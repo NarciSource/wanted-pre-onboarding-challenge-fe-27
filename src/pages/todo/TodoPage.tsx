@@ -13,7 +13,7 @@ export default function TodoPage(): React.ReactElement {
                 <Box flex="7">
                     <TodoCardList />
                 </Box>
-                <Box flex="3" maxWidth="100%" overflow="hidden">
+                <Box flex="3" overflow="hidden">
                     <Outlet /> {/* TodoDetailPage */}
                 </Box>
             </Flex>

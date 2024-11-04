@@ -14,7 +14,7 @@ export default function CommonLayout({ children }: CommonLayoutProps): React.Rea
             <Flex justify="center">
                 <Navbar />
             </Flex>
-            <Box px={{ base: 4 }} pt="24" paddingInline="15%" minH="100vh" w="100%">
+            <Box px={{ base: 4 }} pt="24" paddingInline="15%" minH="100vh">
                 {children}
             </Box>
         </div>
