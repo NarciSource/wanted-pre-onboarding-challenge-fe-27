@@ -14,7 +14,7 @@ export interface TodoItemResponse {
     updatedAt: string;
 }
 
-export default async function getTodoItem(headers: TodoItemHeader, id: string) {
+export default async function readTodo(headers: TodoItemHeader, id: string) {
     const response = await axios.get(host + "/todos/" + id, {
         headers: { ...headers },
     });

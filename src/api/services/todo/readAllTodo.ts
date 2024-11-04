@@ -1,5 +1,5 @@
 import axios from "axios";
-import { TodoItemResponse } from "./todoApi";
+import { TodoItemResponse } from "./readTodo";
 
 const host = import.meta.env.VITE_API_HOST;
 
@@ -17,7 +17,7 @@ export interface TodoListError {
 
 export type TodoListResponse = TodoItemResponse[];
 
-export default async function getTodoList(headers: TodoListHeader) {
+export default async function readAllTodo(headers: TodoListHeader) {
     const response = await axios.get(host + "/todos", {
         headers: { ...headers },
     });

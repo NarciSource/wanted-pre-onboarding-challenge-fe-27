@@ -13,7 +13,11 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import TodoItemCard from "./TodoCardItem";
 import { useQuery } from "@tanstack/react-query";
-import getTodoList, { TodoListError, TodoListHeader, TodoListResponse } from "@/api/todosApi";
+import readAllTodo, {
+    TodoListError,
+    TodoListHeader,
+    TodoListResponse,
+} from "@/api/services/todo/readAllTodo";
 import { Link } from "react-router-dom";
 import TodoForm from "./TodoForm";
 
@@ -24,7 +28,7 @@ export default function TodoCardList(): React.ReactElement {
 
     const { data } = useQuery<TodoListHeader, TodoListError, TodoListResponse>({
         queryKey: ["todoList"],
-        queryFn: () => getTodoList(headers),
+        queryFn: () => readAllTodo(headers),
     });
 
     return (

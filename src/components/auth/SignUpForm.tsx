@@ -4,7 +4,7 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import SignUpCredential from "@/entities/SignUpCredential";
-import signUpUser, { SignUpError, SignUpParameters, SignUpResponse } from "@/api/signUpApi";
+import signUpUser, { SignUpError, SignUpParameters, SignUpResponse } from "@/api/services/user/signUpUser";
 import { useMutation } from "@tanstack/react-query";
 
 export default function SignUpForm(): React.ReactElement {

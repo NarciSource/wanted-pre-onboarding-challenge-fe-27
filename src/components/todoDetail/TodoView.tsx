@@ -1,4 +1,4 @@
-import getTodoItem from "@/api/todoApi";
+import readTodo from "@/api/services/todo/readTodo";
 import {
     Box,
     PopoverArrow,
@@ -31,7 +31,7 @@ export default function TodoView({ todoId }: { todoId: string }): React.ReactEle
     const { data } = useQuery<TodoItemParameters>({
         // todoView && todoId로 쿼리 업데이트
         queryKey: ["todoView", todoId],
-        queryFn: () => getTodoItem(headers, todoId),
+        queryFn: () => readTodo(headers, todoId),
         enabled: !!todoId,
         // 5분 동안 캐시된 데이터 사용
         staleTime: 1000 * 60 * 5,

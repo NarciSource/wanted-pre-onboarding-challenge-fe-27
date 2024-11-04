@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import TodoItem from "@/entities/TodoItem";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import createTodo, { TodoError, TodoItemResponse } from "@/api/createTodoApi";
-import updateTodo from "@/api/updateTodoApi";
+import createTodo, { TodoError, TodoItemResponse } from "@/api/services/todo/createTodo";
+import updateTodo from "@/api/services/todo/updateTodo";
 
 interface TodoParameters {
     id?: string;

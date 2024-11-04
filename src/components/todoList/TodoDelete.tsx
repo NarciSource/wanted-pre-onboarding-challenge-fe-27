@@ -1,4 +1,4 @@
-import deleteTodo, { TodoDeleteParameters, TodoError } from "@/api/deleteTodoApi";
+import deleteTodo, { TodoDeleteParameters, TodoError } from "@/api/services/todo/deleteTodo";
 import { IconButton } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MdDelete } from "react-icons/md";

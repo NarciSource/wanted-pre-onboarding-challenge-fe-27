@@ -4,7 +4,7 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import LoginCredential from "@/entities/LoginCredential";
-import loginUser, { LoginError, LoginParameters, LoginResponse } from "@/api/loginApi";
+import loginUser, { LoginError, LoginParameters, LoginResponse } from "@/api/services/user/loginUser";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
