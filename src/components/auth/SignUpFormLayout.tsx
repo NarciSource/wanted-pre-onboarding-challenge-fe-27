@@ -1,10 +1,13 @@
-import signUpUser, { SignupParameters } from "@/api/services/user/signUpUser";
-import { UserResponse, UserError } from "@/api/userApi";
-import SignUpForm from "@/components/auth/SignUpForm";
-import { Heading, Stack } from "@chakra-ui/react";
-import { useMutation } from "@tanstack/react-query";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
+import { Heading, Stack } from "@chakra-ui/react";
+import { useMutation } from "@tanstack/react-query";
+
+import { UserResponse, UserError } from "@/api/userApi";
+import signUpUser, { SignupParameters } from "@/api/services/user/signUpUser";
+import SignUpCredential from "@/entities/SignUpCredential";
+import SignUpForm from "@/components/auth/SignUpForm";
 
 export default function SignUpComponent(): React.ReactElement {
     const navigate = useNavigate();
@@ -21,7 +24,7 @@ export default function SignUpComponent(): React.ReactElement {
         },
     });
 
-    const handleSubmit = async (data: SignupParameters) => {
+    const handleSubmit = async (data: SignUpCredential) => {
         mutation.mutate(data);
     };
 

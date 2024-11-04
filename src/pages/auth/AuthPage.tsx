@@ -1,13 +1,13 @@
 import React from "react";
-import LoginLayout from "../../components/auth/LoginLayout";
-import SignUpLayout from "../../components/auth/SignUpLayout";
+import LoginFormLayout from "../../components/auth/LoginFormLayout";
+import SignUpFormLayout from "../../components/auth/SignUpFormLayout";
 
 export default function AuthPage(): React.ReactElement {
     return (
         <div>
             <h2>AuthPage</h2>
-            <LoginLayout />
-            <SignUpLayout />
+            <LoginFormLayout />
+            <SignUpFormLayout />
         </div>
     );
 }

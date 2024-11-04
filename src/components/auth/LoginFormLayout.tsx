@@ -1,10 +1,13 @@
-import loginUser, { LoginParameters } from "@/api/services/user/loginUser";
-import { UserResponse, UserError } from "@/api/userApi";
-import LoginForm from "@/components/auth/LoginForm";
-import { Box, Heading, Stack, Text } from "@chakra-ui/react";
-import { useMutation } from "@tanstack/react-query";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
+import { useMutation } from "@tanstack/react-query";
+import { Box, Heading, Stack, Text } from "@chakra-ui/react";
+
+import { UserResponse, UserError } from "@/api/userApi";
+import loginUser, { LoginParameters } from "@/api/services/user/loginUser";
+import LoginCredential from "@/entities/LoginCredential";
+import LoginForm from "@/components/auth/LoginForm";
 
 export default function LoginLayout(): React.ReactElement {
     const navigate = useNavigate();
@@ -21,7 +24,7 @@ export default function LoginLayout(): React.ReactElement {
         },
     });
 
-    const handleSubmit = async (data: LoginParameters) => {
+    const handleSubmit = async (data: LoginCredential) => {
         mutation.mutate(data);
     };
 
