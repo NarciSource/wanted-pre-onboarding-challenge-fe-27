@@ -9,7 +9,7 @@ import loginUser, { LoginParameters } from "@/api/services/user/loginUser";
 import LoginCredential from "@/entities/LoginCredential";
 import LoginForm from "@/components/auth/LoginForm";
 
-export default function LoginLayout(): React.ReactElement {
+export default function LoginFormLayout(): React.ReactElement {
     const navigate = useNavigate();
 
     const mutation = useMutation<UserResponse, UserError, LoginParameters>({

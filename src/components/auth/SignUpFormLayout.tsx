@@ -9,7 +9,7 @@ import signUpUser, { SignupParameters } from "@/api/services/user/signUpUser";
 import SignUpCredential from "@/entities/SignUpCredential";
 import SignUpForm from "@/components/auth/SignUpForm";
 
-export default function SignUpComponent(): React.ReactElement {
+export default function SignUpFormLayout(): React.ReactElement {
     const navigate = useNavigate();
 
     const mutation = useMutation<UserResponse, UserError, SignupParameters>({

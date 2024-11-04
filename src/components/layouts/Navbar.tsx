@@ -1,7 +1,10 @@
 import React from "react";
 
-import { Box, Button, Flex, Link, Stack } from "@chakra-ui/react";
+import { Box, Flex, Link, Stack } from "@chakra-ui/react";
 import { useColorModeValue } from "../ui/color-mode";
+import Popover from "./Popover";
+import LoginFormLayout from "../auth/LoginFormLayout";
+import SignUpFormLayout from "../auth/SignUpFormLayout";
 
 export default function Navbar(): React.ReactElement {
     return (
@@ -19,12 +22,8 @@ export default function Navbar(): React.ReactElement {
                 </Flex>
 
                 <Stack justify="flex-end" direction="row">
-                    <Button colorPalette="teal" variant="subtle">
-                        로그인
-                    </Button>
-                    <Button colorPalette="teal" variant="subtle">
-                        회원가입
-                    </Button>
+                    <Popover name="로그인" Component={<LoginFormLayout />} />
+                    <Popover name="회원가입" Component={<SignUpFormLayout />} />
                 </Stack>
             </Flex>
         </Box>
