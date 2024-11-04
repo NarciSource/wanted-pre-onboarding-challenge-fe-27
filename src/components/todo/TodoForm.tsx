@@ -13,6 +13,9 @@ interface TodoFormProps {
     onSubmit: (data: TodoParameters) => void;
 }
 
+type CreateFormData = Pick<TodoItem, "title" | "content">;
+type UpdateFormData = TodoItem;
+
 export default function TodoForm({
     id,
     title,
@@ -24,7 +27,7 @@ export default function TodoForm({
         handleSubmit,
         setValue,
         formState: { errors, isValid },
-    } = useForm<TodoParameters>({
+    } = useForm<CreateFormData | UpdateFormData>({
         // 유효성 검사
         resolver: yupResolver(TodoItem.validateSchema),
         mode: "onChange",
