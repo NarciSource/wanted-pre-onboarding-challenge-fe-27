@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
     Box,
     PopoverArrow,
@@ -12,9 +13,10 @@ import {
 } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
+
 import { TodoResponse } from "@/api/todoApi";
 import readTodo from "@/api/services/todo/readTodo";
-import TodoLayout from "../todo/TodoLayout";
+import TodoFormLayout from "@/components/todoForm/TodoFormLayout";
 
 export default function TodoView({ todoId }: { todoId: string }): React.ReactElement {
     const { data } = useQuery<TodoResponse>({
@@ -39,7 +41,7 @@ export default function TodoView({ todoId }: { todoId: string }): React.ReactEle
                             <PopoverArrow />
                             <PopoverBody>
                                 <PopoverTitle fontWeight="medium">ToDo 추가</PopoverTitle>
-                                <TodoLayout
+                                <TodoFormLayout
                                     id={data.id}
                                     title={data.title}
                                     content={data.content}

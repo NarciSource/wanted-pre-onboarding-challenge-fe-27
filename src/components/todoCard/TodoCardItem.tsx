@@ -1,8 +1,10 @@
+import React from "react";
+
 import { Text } from "@chakra-ui/react";
 import { Card } from "@chakra-ui/react/card";
 import { Stack } from "@chakra-ui/react/stack";
-import React from "react";
-import TodoDelete from "./TodoDelete";
+
+import TodoDeleteButton from "./TodoDeleteButton";
 
 interface TodoItemParameters {
     id: string;
@@ -22,7 +24,7 @@ export default function TodoItemCard({
         <Card.Root variant="elevated" key={id}>
             <Card.Header>
                 <Card.Title>{title}</Card.Title>
-                <TodoDelete todoId={id} />
+                <TodoDeleteButton todoId={id} />
             </Card.Header>
             <Card.Footer>
                 <Stack>

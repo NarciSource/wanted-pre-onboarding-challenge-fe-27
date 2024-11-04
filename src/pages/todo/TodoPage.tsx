@@ -1,7 +1,9 @@
-import TodoCardList from "@/components/todoList/TodoCardList";
-import { Flex } from "@chakra-ui/react";
-import { Outlet } from "react-router-dom";
 import React from "react";
+import { Outlet } from "react-router-dom";
+
+import { Flex } from "@chakra-ui/react";
+
+import TodoCardList from "@/components/todoCard/TodoCardList";
 
 export default function TodoPage(): React.ReactElement {
     return (
