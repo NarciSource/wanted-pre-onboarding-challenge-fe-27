@@ -1,3 +1,5 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import {
     Box,
     For,
@@ -10,25 +12,16 @@ import {
     Stack,
 } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
-import React from "react";
-import TodoItemCard from "./TodoCardItem";
 import { useQuery } from "@tanstack/react-query";
-import readAllTodo, {
-    TodoListError,
-    TodoListHeader,
-    TodoListResponse,
-} from "@/api/services/todo/readAllTodo";
-import { Link } from "react-router-dom";
+import { TodoError, TodoListResponse } from "@/api/todoApi";
+import readAllTodo from "@/api/services/todo/readAllTodo";
+import TodoItemCard from "./TodoCardItem";
 import TodoForm from "./TodoForm";
 
 export default function TodoCardList(): React.ReactElement {
-    const headers = {
-        Authorization: localStorage["token"],
-    };
-
-    const { data } = useQuery<TodoListHeader, TodoListError, TodoListResponse>({
+    const { data } = useQuery<undefined, TodoError, TodoListResponse>({
         queryKey: ["todoList"],
-        queryFn: () => readAllTodo(headers),
+        queryFn: readAllTodo,
     });
 
     return (

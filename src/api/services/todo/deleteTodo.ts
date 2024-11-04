@@ -1,34 +1,11 @@
-import axios from "axios";
+import todoApi from "@/api/todoApi";
 
-const host = import.meta.env.VITE_API_HOST;
-
-export interface TodoDeleteParameters {
+export interface TodoParameters {
     id: string;
 }
 
-export interface TodoError {
-    status: number;
-    statusText: string;
-    data: {
-        details: string;
-    };
-}
+export default async function deleteTodo({ id }: TodoParameters): Promise<boolean> {
+    const response = await todoApi.delete(`/${id}`);
 
-export default async function deleteTodo({ id }: TodoDeleteParameters): Promise<boolean> {
-    try {
-        await axios.delete(host + "/todos/" + id, {
-            headers: {
-                Authorization: localStorage["token"],
-            },
-        });
-
-        return true;
-    } catch (error) {
-        if (axios.isAxiosError(error)) {
-            if (error.response) {
-                throw error.response;
-            }
-        }
-        throw error;
-    }
+    return response.status === 200;
 }

@@ -1,12 +1,13 @@
-import deleteTodo, { TodoDeleteParameters, TodoError } from "@/api/services/todo/deleteTodo";
 import { IconButton } from "@chakra-ui/react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MdDelete } from "react-icons/md";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { TodoError } from "@/api/todoApi";
+import deleteTodo, { TodoParameters } from "@/api/services/todo/deleteTodo";
 
 export default function TodoDelete({ todoId }: { todoId: string }) {
     const queryClient = useQueryClient();
 
-    const { mutate } = useMutation<boolean, TodoError, TodoDeleteParameters>({
+    const { mutate } = useMutation<boolean, TodoError, TodoParameters>({
         mutationFn: deleteTodo,
         onSuccess: async () => {
             await queryClient.refetchQueries({

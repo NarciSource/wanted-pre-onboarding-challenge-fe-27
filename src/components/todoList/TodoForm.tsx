@@ -1,18 +1,13 @@
 import React, { useEffect } from "react";
-import { Field } from "../ui/field";
-import { Button, Input, Stack, Textarea } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import TodoItem from "@/entities/TodoItem";
+import { Button, Input, Stack, Textarea } from "@chakra-ui/react";
+import { Field } from "@/components/ui/field";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import createTodo, { TodoError, TodoItemResponse } from "@/api/services/todo/createTodo";
-import updateTodo from "@/api/services/todo/updateTodo";
-
-interface TodoParameters {
-    id?: string;
-    title: string;
-    content: string;
-}
+import { TodoError, TodoResponse } from "@/api/todoApi";
+import createTodo from "@/api/services/todo/createTodo";
+import updateTodo, { TodoParameters } from "@/api/services/todo/updateTodo";
+import TodoItem from "@/entities/TodoItem";
 
 export default function TodoForm({
     id,
@@ -37,7 +32,7 @@ export default function TodoForm({
     // App.tsx에서 queryClient를 이미 생성했으므로 훅으로 접근
     const queryClient = useQueryClient();
 
-    const { mutate } = useMutation<TodoItemResponse, TodoError, TodoParameters>({
+    const { mutate } = useMutation<TodoResponse, TodoError, TodoParameters>({
         mutationFn: id ? updateTodo : createTodo,
         onSuccess: async () => {
             // 쿼리 식별자로 재요청

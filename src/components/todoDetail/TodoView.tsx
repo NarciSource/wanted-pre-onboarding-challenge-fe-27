@@ -1,4 +1,4 @@
-import readTodo from "@/api/services/todo/readTodo";
+import React from "react";
 import {
     Box,
     PopoverArrow,
@@ -10,28 +10,17 @@ import {
     Stack,
     Text,
 } from "@chakra-ui/react";
+import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
-import { Button } from "../ui/button";
+import { TodoResponse } from "@/api/todoApi";
+import readTodo from "@/api/services/todo/readTodo";
 import TodoForm from "../todoList/TodoForm";
 
-interface TodoItemParameters {
-    id: string;
-    title: string;
-    content: string;
-    createdAt: string;
-    updatedAt: string;
-}
-
 export default function TodoView({ todoId }: { todoId: string }): React.ReactElement {
-    const headers = {
-        Authorization: localStorage["token"],
-    };
-
-    const { data } = useQuery<TodoItemParameters>({
+    const { data } = useQuery<TodoResponse>({
         // todoView && todoId로 쿼리 업데이트
         queryKey: ["todoView", todoId],
-        queryFn: () => readTodo(headers, todoId),
+        queryFn: () => readTodo({ id: todoId }),
         enabled: !!todoId,
         // 5분 동안 캐시된 데이터 사용
         staleTime: 1000 * 60 * 5,

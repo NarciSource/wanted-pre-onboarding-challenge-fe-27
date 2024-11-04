@@ -1,26 +1,7 @@
-import axios from "axios";
-import { TodoItemResponse } from "./readTodo";
+import todoApi from "@/api/todoApi";
 
-const host = import.meta.env.VITE_API_HOST;
+export default async function readAllTodo() {
+    const response = await todoApi.get("/");
 
-export interface TodoListHeader {
-    Authorization: string;
-}
-
-export interface TodoListError {
-    status: number;
-    statusText: string;
-    data: {
-        details: string;
-    };
-}
-
-export type TodoListResponse = TodoItemResponse[];
-
-export default async function readAllTodo(headers: TodoListHeader) {
-    const response = await axios.get(host + "/todos", {
-        headers: { ...headers },
-    });
-
-    return response.data.data;
+    return response.data;
 }

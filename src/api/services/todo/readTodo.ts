@@ -1,23 +1,11 @@
-import axios from "axios";
+import todoApi, { TodoResponse } from "@/api/todoApi";
 
-const host = import.meta.env.VITE_API_HOST;
-
-export interface TodoItemHeader {
-    Authorization: string;
-}
-
-export interface TodoItemResponse {
-    title: string;
-    content: string;
+export interface TodoParameters {
     id: string;
-    createdAt: string;
-    updatedAt: string;
 }
 
-export default async function readTodo(headers: TodoItemHeader, id: string) {
-    const response = await axios.get(host + "/todos/" + id, {
-        headers: { ...headers },
-    });
+export default async function readTodo({ id }: TodoParameters): Promise<TodoResponse> {
+    const response = await todoApi.get<TodoResponse>(`/${id}`);
 
-    return response.data.data;
+    return response.data;
 }

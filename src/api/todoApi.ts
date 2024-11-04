@@ -20,6 +20,8 @@ export interface TodoResponse {
     updatedAt: string;
 }
 
+export type TodoListResponse = TodoResponse[];
+
 const todoApi = axios.create({
     baseURL,
 });
