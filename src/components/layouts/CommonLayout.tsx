@@ -3,6 +3,7 @@ import React from "react";
 import { Box, Flex } from "@chakra-ui/react";
 
 import Navbar from "./Navbar";
+import { Toaster } from "../ui/toaster";
 
 interface CommonLayoutProps {
     children: React.ReactNode;
@@ -17,6 +18,7 @@ export default function CommonLayout({ children }: CommonLayoutProps): React.Rea
             <Box px={{ base: 4 }} pt="24" paddingInline="15%" minH="100vh">
                 {children}
             </Box>
+            <Toaster />
         </div>
     );
 }

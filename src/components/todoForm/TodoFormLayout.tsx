@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toaster } from "@/components/ui/toaster";
 
 import { TodoError, TodoResponse } from "@/api/todoApi";
 import createTodo from "@/api/services/todo/createTodo";
@@ -32,6 +33,8 @@ export default function TodoLayout({
             await queryClient.refetchQueries({
                 queryKey: ["todoView"],
             });
+
+            toaster.create({ description: "Todos 업데이트 성공", type: "info" });
         },
         onError: (error) => {
             console.error("Todo 추가 실패", error);
