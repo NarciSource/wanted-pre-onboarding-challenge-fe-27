@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { Card } from "@chakra-ui/react/card";
 
 import TodoDeleteButton from "./TodoDeleteButton";
@@ -18,8 +18,15 @@ export default function TodoItemCard({
     title,
     content,
 }: TodoItemParameters): React.ReactElement {
+    const colors = ["blue", "red", "green", "yellow", "purple", "teal", "orange"];
+
+    const getRandomColor = () => {
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        return randomColor + ".50";
+    };
+
     return (
-        <Card.Root variant="elevated" key={id} margin={3} h={300} w={300}>
+        <Card.Root variant="elevated" key={id} margin={3} h={300} w={300} bg={getRandomColor()}>
             <Card.Header position="absolute">
                 <Card.Title>{title}</Card.Title>
             </Card.Header>
@@ -27,7 +34,7 @@ export default function TodoItemCard({
                 <Flex justify="flex-end">
                     <TodoDeleteButton todoId={id} />
                 </Flex>
-                <Box>{content}</Box>
+                <Text lineClamp="9">{content}</Text>
             </Card.Body>
         </Card.Root>
     );
