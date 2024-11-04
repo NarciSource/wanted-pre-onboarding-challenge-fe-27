@@ -31,7 +31,7 @@ export default function TodoLayout({
             // 여러 캐시 식별자를 요청
             // queryKey의 배열은 && 임
             await queryClient.refetchQueries({
-                queryKey: ["todoView"],
+                queryKey: ["todoView", id],
             });
 
             toaster.create({ description: "Todos 업데이트 성공", type: "info" });

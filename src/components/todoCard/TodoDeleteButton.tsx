@@ -1,12 +1,17 @@
+import { useLocation, useNavigate } from "react-router-dom";
+
 import { IconButton } from "@chakra-ui/react";
 import { MdDelete } from "react-icons/md";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toaster } from "@/components/ui/toaster";
 
 import { TodoError } from "@/api/todoApi";
 import deleteTodo, { TodoParameters } from "@/api/services/todo/deleteTodo";
 
 export default function TodoDelete({ todoId }: { todoId: string }) {
     const queryClient = useQueryClient();
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const { mutate } = useMutation<boolean, TodoError, TodoParameters>({
         mutationFn: deleteTodo,
@@ -14,9 +19,11 @@ export default function TodoDelete({ todoId }: { todoId: string }) {
             await queryClient.refetchQueries({
                 queryKey: ["todoList"],
             });
-            await queryClient.refetchQueries({
-                queryKey: ["todoView"],
-            });
+
+            if (location.pathname === `/detail/${todoId}`) {
+                navigate("/");
+            }
+            toaster.create({ description: "삭제 성공", type: "info" });
         },
     });
 
