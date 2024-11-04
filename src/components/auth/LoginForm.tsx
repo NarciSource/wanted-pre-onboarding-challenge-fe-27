@@ -1,12 +1,13 @@
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Input, Stack } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
 import { PasswordInput } from "@/components/ui/password-input";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import LoginCredential from "@/entities/LoginCredential";
-import loginUser, { LoginError, LoginParameters, LoginResponse } from "@/api/services/user/loginUser";
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { UserError, UserResponse } from "@/api/userApi";
+import loginUser, { LoginParameters } from "@/api/services/user/loginUser";
+import LoginCredential from "@/entities/LoginCredential";
 
 export default function LoginForm(): React.ReactElement {
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function LoginForm(): React.ReactElement {
         mode: "onChange",
     });
 
-    const mutation = useMutation<LoginResponse, LoginError, LoginParameters>({
+    const mutation = useMutation<UserResponse, UserError, LoginParameters>({
         mutationFn: loginUser,
         onSuccess: ({ token }) => {
             localStorage["token"] = token;

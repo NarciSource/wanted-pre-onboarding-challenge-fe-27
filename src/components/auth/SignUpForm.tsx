@@ -1,11 +1,12 @@
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Input, Stack } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
 import { PasswordInput } from "@/components/ui/password-input";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import SignUpCredential from "@/entities/SignUpCredential";
-import signUpUser, { SignUpError, SignUpParameters, SignUpResponse } from "@/api/services/user/signUpUser";
 import { useMutation } from "@tanstack/react-query";
+import { UserError, UserResponse } from "@/api/userApi";
+import signUpUser, { SignupParameters } from "@/api/services/user/signUpUser";
+import SignUpCredential from "@/entities/SignUpCredential";
 
 export default function SignUpForm(): React.ReactElement {
     const {
@@ -17,7 +18,7 @@ export default function SignUpForm(): React.ReactElement {
         mode: "onChange",
     });
 
-    const mutation = useMutation<SignUpResponse, SignUpError, SignUpParameters>({
+    const mutation = useMutation<UserResponse, UserError, SignupParameters>({
         mutationFn: signUpUser,
         onSuccess: ({ token }) => {
             localStorage["token"] = token;

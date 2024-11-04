@@ -1,42 +1,18 @@
-import axios from "axios";
+import userApi, { UserResponse } from "@/api/userApi";
 
-const host = import.meta.env.VITE_API_HOST;
-
-export interface SignUpParameters {
+export interface SignupParameters {
     email: string;
     password: string;
-}
-
-export interface SignUpResponse {
-    message: string;
-    token: string;
-}
-
-export interface SignUpError {
-    status: number;
-    statusText: string;
-    data: {
-        details: string;
-    };
 }
 
 export default async function signUpUser({
     email,
     password,
-}: SignUpParameters): Promise<SignUpResponse> {
-    try {
-        const response = await axios.post<SignUpResponse>(host + "/users/create", {
-            email,
-            password,
-        });
+}: SignupParameters): Promise<UserResponse> {
+    const response = await userApi.post<UserResponse>("/create", {
+        email,
+        password,
+    });
 
-        return response.data;
-    } catch (error) {
-        if (axios.isAxiosError(error)) {
-            if (error.response) {
-                throw error.response;
-            }
-        }
-        throw error;
-    }
+    return response.data;
 }

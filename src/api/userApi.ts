@@ -3,11 +3,6 @@ import userResponseInterceptor from "./interceptors/userResponse";
 
 const baseURL = import.meta.env.VITE_API_HOST + "/users";
 
-export interface UserParameters {
-    email: string;
-    password: string;
-}
-
 export interface UserResponse {
     message: string;
     token: string;
