@@ -29,8 +29,12 @@ export default function TodoView({ todoId }: { todoId: string }): React.ReactEle
     };
 
     const { data } = useQuery<TodoItemParameters>({
-        queryKey: ["todoView"],
+        // todoView && todoId로 쿼리 업데이트
+        queryKey: ["todoView", todoId],
         queryFn: () => getTodoItem(headers, todoId),
+        enabled: !!todoId,
+        // 5분 동안 캐시된 데이터 사용
+        staleTime: 1000 * 60 * 5,
     });
 
     return (
