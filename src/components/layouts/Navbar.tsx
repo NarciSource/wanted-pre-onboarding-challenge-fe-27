@@ -1,18 +1,24 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-import { Box, Flex, Link, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Link, Stack, Text } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 
 import Popover from "./Popover";
 import LoginFormLayout from "@/components/auth/LoginFormLayout";
 import SignUpFormLayout from "@/components/auth/SignUpFormLayout";
 import { FcTodoList } from "react-icons/fc";
+import useLoggedIn from "@/hooks/useLoggedIn";
 
 export default function Navbar(): React.ReactElement {
+    const { isLoggedIn, logout } = useLoggedIn();
+    const navigate = useNavigate();
+
     return (
         <Box
             zIndex={10}
             position="fixed"
+            top={0}
             left={0}
             width="100%"
             py={{ base: 2 }}
@@ -22,7 +28,7 @@ export default function Navbar(): React.ReactElement {
             borderColor="gray.300"
             boxShadow="sd"
         >
-            <Flex maxW="960px" minH="60px" align="center" m="auto">
+            <Flex maxW="960px" h="60px" align="center" m="auto">
                 <Flex justify="center" flex={{ base: 1, md: "auto" }}>
                     <Link
                         href="/"
@@ -36,7 +42,20 @@ export default function Navbar(): React.ReactElement {
                 </Flex>
 
                 <Stack justify="flex-end" direction="row">
-                    <Popover name="로그인" Component={<LoginFormLayout />} />
+                    {isLoggedIn ? (
+                        <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => {
+                                logout();
+                                navigate("/");
+                            }}
+                        >
+                            로그아웃
+                        </Button>
+                    ) : (
+                        <Popover name="로그인" Component={<LoginFormLayout />} />
+                    )}
                     <Popover name="회원가입" Component={<SignUpFormLayout />} />
                 </Stack>
             </Flex>

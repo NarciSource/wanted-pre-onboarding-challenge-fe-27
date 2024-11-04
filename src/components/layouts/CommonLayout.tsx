@@ -1,23 +1,28 @@
 import React from "react";
 
 import { Box, Flex } from "@chakra-ui/react";
+import { Toaster } from "@/components/ui/toaster";
 
 import Navbar from "./Navbar";
-import { Toaster } from "../ui/toaster";
+import useLoggedIn from "@/hooks/useLoggedIn";
 
 interface CommonLayoutProps {
     children: React.ReactNode;
 }
 
 export default function CommonLayout({ children }: CommonLayoutProps): React.ReactElement {
+    const { isLoggedIn } = useLoggedIn();
+
     return (
         <div>
             <Flex justify="center">
                 <Navbar />
             </Flex>
-            <Box px={{ base: 4 }} pt="24" paddingInline="15%" minH="100vh">
-                {children}
-            </Box>
+            {isLoggedIn && (
+                <Box px={{ base: 4 }} pt="24" paddingInline="15%" minH="100vh">
+                    {children}
+                </Box>
+            )}
             <Toaster />
         </div>
     );
