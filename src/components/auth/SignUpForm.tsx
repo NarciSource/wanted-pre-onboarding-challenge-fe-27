@@ -3,12 +3,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Input, Stack } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
 import { PasswordInput } from "@/components/ui/password-input";
-import { useMutation } from "@tanstack/react-query";
-import { UserError, UserResponse } from "@/api/userApi";
-import signUpUser, { SignupParameters } from "@/api/services/user/signUpUser";
 import SignUpCredential from "@/entities/SignUpCredential";
 
-export default function SignUpForm(): React.ReactElement {
+interface SignUpFormProps {
+    onSubmit: (data: SignUpCredential) => void;
+}
+
+export default function SignUpForm({ onSubmit }: SignUpFormProps): React.ReactElement {
     const {
         register,
         handleSubmit,
@@ -19,23 +20,8 @@ export default function SignUpForm(): React.ReactElement {
         mode: "onChange",
     });
 
-    const mutation = useMutation<UserResponse, UserError, SignupParameters>({
-        mutationFn: signUpUser,
-        onSuccess: ({ token }) => {
-            localStorage["token"] = token;
-        },
-        onError: (error) => {
-            localStorage.removeItem("token");
-            console.error("회원가입 실패", error);
-        },
-    });
-
-    const onSubmit = handleSubmit(async (data) => {
-        mutation.mutate(data);
-    });
-
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <Stack gap="4" align="flex-start" maxW="sm">
                 <Field
                     label="이메일"
@@ -85,8 +71,6 @@ export default function SignUpForm(): React.ReactElement {
             >
                 제출
             </Button>
-
-            {mutation.error?.data.details}
         </form>
     );
 }
