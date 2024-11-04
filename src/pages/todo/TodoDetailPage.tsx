@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import TodoView from "@/components/todoDetail/TodoView";
+import TodoDetail from "@/components/todoDetail/TodoDetail";
 
 export default function TodoDetailPage() {
     const { todoId } = useParams();
 
-    return <div>{todoId && <TodoView todoId={todoId} />}</div>;
+    return <div>{todoId && <TodoDetail todoId={todoId} />}</div>;
 }
