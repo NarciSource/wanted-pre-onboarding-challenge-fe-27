@@ -14,6 +14,7 @@ export default function SignUpForm(): React.ReactElement {
         handleSubmit,
         formState: { errors, isValid },
     } = useForm<SignUpCredential>({
+        // 유효성 검사
         resolver: yupResolver(SignUpCredential.validateSchema),
         mode: "onChange",
     });
@@ -24,6 +25,7 @@ export default function SignUpForm(): React.ReactElement {
             localStorage["token"] = token;
         },
         onError: (error) => {
+            localStorage.removeItem("token");
             console.error("회원가입 실패", error);
         },
     });

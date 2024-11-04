@@ -17,6 +17,7 @@ export default function LoginForm(): React.ReactElement {
         handleSubmit,
         formState: { errors, isValid },
     } = useForm<LoginCredential>({
+        // 유효성 검사
         resolver: yupResolver(LoginCredential.validateSchema),
         mode: "onChange",
     });
@@ -25,17 +26,15 @@ export default function LoginForm(): React.ReactElement {
         mutationFn: loginUser,
         onSuccess: ({ token }) => {
             localStorage["token"] = token;
+            navigate("/");
         },
         onError: (error) => {
+            localStorage.removeItem("token");
             console.error("로그인 실패", error);
         },
     });
 
     const onSubmit = handleSubmit(async (data) => {
-        if (localStorage["token"]) {
-            navigate("/");
-        }
-
         mutation.mutate(data);
     });
 
