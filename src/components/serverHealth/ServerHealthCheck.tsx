@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
 import { Icon, Input, Stack } from "@chakra-ui/react";
 import { FaCheckCircle } from "react-icons/fa";
 
-import useServerHealth from "@/hooks/useServerHealth";
+import HealthyCheckContext from "@/context/HealthyCheckContext";
 
 export default function ServerHealthCheck(): React.ReactElement {
-    const [serverHost, setServerHost] = useState(import.meta.env.VITE_API_HOST);
-    const { isServerOnline } = useServerHealth(serverHost);
+    const { serverHost, setServerHost, isServerOnline } = useContext(HealthyCheckContext);
 
     const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         setServerHost(event.target.value);
