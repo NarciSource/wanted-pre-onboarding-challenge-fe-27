@@ -13,6 +13,7 @@ export default function useServerHealth(
         const handler = setTimeout(async () => {
             const response = await ping(url);
             setServerOnline(response);
+            localStorage.setItem("serverHost", url);
 
             userApi.defaults.baseURL = url + "/users";
             todoApi.defaults.baseURL = url + "/todos";

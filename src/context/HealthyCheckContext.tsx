@@ -19,7 +19,9 @@ const defaultContextValue: ContextType = {
 const HealthyCheckContext = createContext<ContextType>(defaultContextValue);
 
 export const HealthyCheckProvider = ({ children }: { children: ReactNode }) => {
-    const [serverHost, setServerHost] = useState<string>(import.meta.env.VITE_API_HOST);
+    const [serverHost, setServerHost] = useState<string>(() => {
+        return localStorage.getItem("serverHost") || import.meta.env.VITE_API_HOST;
+    });
     const [isServerOnline, setServerOnline] = useServerHealth(serverHost);
 
     return (
