@@ -8,9 +8,10 @@ import { TodoError, TodoListResponse } from "@/api/todoApi";
 import readAllTodo from "@/api/services/todo/readAllTodo";
 import TodoCardItem from "./TodoCardItem";
 import TodoCardAddable from "./TodoCardAddable";
+import EmptyCardItem from "./EmptyCardItem";
 
 export default function TodoCardList(): React.ReactElement {
-    const { data } = useQuery<undefined, TodoError, TodoListResponse>({
+    const { data, isFetching } = useQuery<undefined, TodoError, TodoListResponse>({
         queryKey: ["todoList"],
         queryFn: readAllTodo,
     });
@@ -19,6 +20,7 @@ export default function TodoCardList(): React.ReactElement {
         <Box>
             <Flex direction="row" wrap="wrap" justify="flex-start">
                 <TodoCardAddable />
+                {isFetching && new Array(8).fill(0).map((_, i) => <EmptyCardItem key={i} />)}
 
                 <For each={data?.slice().reverse()}>
                     {(each) => (
