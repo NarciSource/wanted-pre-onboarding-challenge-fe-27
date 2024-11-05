@@ -9,14 +9,18 @@ import CommonLayout from "@/components/layouts/CommonLayout";
 export default function TodoPage(): React.ReactElement {
     return (
         <CommonLayout>
-            <Flex>
-                <Box flex="7">
-                    <TodoCardList />
-                </Box>
-                <Box flex="3" overflow="hidden">
-                    <Outlet /> {/* TodoDetailPage */}
-                </Box>
-            </Flex>
+            {(isLoggedIn) =>
+                isLoggedIn ? (
+                    <Flex>
+                        <Box flex="7">
+                            <TodoCardList />
+                        </Box>
+                        <Box flex="3" overflow="hidden">
+                            <Outlet /> {/* TodoDetailPage */}
+                        </Box>
+                    </Flex>
+                ) : null
+            }
         </CommonLayout>
     );
 }

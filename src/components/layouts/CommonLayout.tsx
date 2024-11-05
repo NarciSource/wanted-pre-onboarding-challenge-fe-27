@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import useLoggedIn from "@/hooks/useLoggedIn";
 
 interface CommonLayoutProps {
-    children: React.ReactNode;
+    children: (message: boolean) => React.ReactNode;
 }
 
 export default function CommonLayout({ children }: CommonLayoutProps): React.ReactElement {
@@ -18,15 +18,15 @@ export default function CommonLayout({ children }: CommonLayoutProps): React.Rea
             <Flex justify="center">
                 <Navbar />
             </Flex>
-            {isLoggedIn ? (
-                <Box px={{ base: 4 }} pt="24" paddingInline="15%" minH="100vh">
-                    {children}
-                </Box>
-            ) : (
-                <Flex justify="center" align="center">
-                    <Image src={`./images/logo.png`} alt="logo" align="center" w={700} />
-                </Flex>
-            )}
+            <Box px={{ base: 4 }} pt="24" paddingInline="15%" minH="100vh">
+                {children(isLoggedIn)}
+                {!isLoggedIn && (
+                    <Flex justify="center" align="center">
+                        <Image src={`./images/logo.png`} alt="logo" align="center" w={700} />
+                    </Flex>
+                )}
+            </Box>
+
             <Toaster />
         </div>
     );
