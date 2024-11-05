@@ -3,7 +3,7 @@
 ## 기술스택
 
 -   ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=javascript&logoColor=white) [![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://ko.vite.dev)
--   [![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black)](https://reactjs.org) ![React_Hook_Form](https://img.shields.io/badge/React_Hook_Form-EC5990?style=flat-square&logo=reacthookform&logoColor=black) [![React Router](https://img.shields.io/badge/React%20Router-CA4245?style=flat-square&logo=reactrouter&logoColor=white)](https://reactrouter.com/en/main)
+-   [![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black)](https://reactjs.org) [![React Router](https://img.shields.io/badge/React%20Router-CA4245?style=flat-square&logo=reactrouter&logoColor=white)](https://reactrouter.com/en/main) [![React_Hook_Form](https://img.shields.io/badge/React_Hook_Form-EC5990?style=flat-square&logo=reacthookform&logoColor=white)](https://www.react-hook-form.com/)
 -   [![React Query](https://img.shields.io/badge/React_Query-FF4154?style=flat-square&logo=reactquery&logoColor=white)](https://tanstack.com/query/latest/docs/framework/react/overview) [![Axios](https://img.shields.io/badge/Axios-%235A29E4?style=flat-square&logo=axios)](https://axios-http.com/kr/docs/intro)
 -   [![Chakra UI](https://img.shields.io/badge/Chakra_UI-319795?style=flat-square&logo=chakraui&logoColor=white)](https://www.chakra-ui.com/)
 
@@ -60,7 +60,7 @@
 ## 폴더구조
 
 ```python
-Sticky-TODO
+Sticky-Todo
 ├─ .env
 ├─ .git
 ├─ .gitignore
@@ -79,6 +79,8 @@ Sticky-TODO
 │  │  │  ├─ todoResponse.ts
 │  │  │  └─ userResponse.ts
 │  │  ├─ services # 서비스별 api 호출 함수
+│  │  │  ├─ serverHealthy
+│  │  │  │  └─ ping.ts
 │  │  │  ├─ todo
 │  │  │  │  ├─ createTodo.ts
 │  │  │  │  ├─ deleteTodo.ts
@@ -102,7 +104,10 @@ Sticky-TODO
 │  │  │  ├─ CommonLayout.tsx
 │  │  │  ├─ Navbar.tsx
 │  │  │  └─ Popover.tsx
+│  │  ├─ serverHealth
+│  │  │  └─ ServerHealthCheck.tsx
 │  │  ├─ todoCard
+│  │  │  ├─ EmptyCardItem.tsx
 │  │  │  ├─ TodoCardAddable.tsx
 │  │  │  ├─ TodoCardItem.tsx
 │  │  │  ├─ TodoCardList.tsx
@@ -115,21 +120,24 @@ Sticky-TODO
 │  │  │  ├─ TodoForm.tsx
 │  │  │  └─ TodoFormLayout.tsx
 │  │  └─ ui
+│  ├─ context # 중앙 상태저장소
+│  │  └─ HealthyCheckContext.tsx
 │  ├─ entities # 도메인 객체
 │  │  ├─ LoginCredential.ts
 │  │  ├─ SignUpCredential.ts
 │  │  └─ TodoItem.ts
 │  ├─ hooks # 커스터마이징 훅
-│  │  └─ useLoggedIn.ts
+│  │  ├─ useLoggedIn.ts
+│  │  └─ useServerHealth.ts
 │  ├─ index.css
 │  ├─ main.tsx # 진입점
 │  ├─ pages # 페이지
 │  │  ├─ auth
 │  │  │  └─ AuthPage.tsx
-│  │  └─ todo
+│  │  └─ todo # 라우터
 │  │     ├─ TodoDetailPage.tsx
 │  │     └─ TodoPage.tsx
-│  ├─ router # 라우터
+│  ├─ router
 │  │  ├─ authRouter.tsx
 │  │  └─ mainRouter.tsx
 │  └─ vite-env.d.ts
