@@ -2,6 +2,7 @@ import React from "react";
 
 import { Box, Flex, Image } from "@chakra-ui/react";
 import { Toaster } from "@/components/ui/toaster";
+import { useColorModeValue } from "@/components/ui/color-mode";
 
 import Navbar from "./Navbar";
 import useLoggedIn from "@/hooks/useLoggedIn";
@@ -18,7 +19,13 @@ export default function CommonLayout({ children }: CommonLayoutProps): React.Rea
             <Flex justify="center">
                 <Navbar />
             </Flex>
-            <Box px={{ base: 4 }} pt="24" paddingInline="15%" minH="100vh">
+            <Box
+                px={{ base: 4 }}
+                pt="24"
+                paddingInline="15%"
+                minH="100vh"
+                bg={useColorModeValue("white", "gray.700")}
+            >
                 {children(isLoggedIn)}
                 {!isLoggedIn && (
                     <Flex justify="center" align="center">

@@ -26,7 +26,15 @@ export default function TodoItemCard({
     };
 
     return (
-        <Card.Root variant="elevated" key={id} margin={3} h={300} w={300} bg={getRandomColor()}>
+        <Card.Root
+            variant="elevated"
+            key={id}
+            margin={3}
+            h={300}
+            w={300}
+            bg={getRandomColor()}
+            color="black"
+        >
             <Card.Header position="absolute">
                 <Card.Title>{title}</Card.Title>
             </Card.Header>

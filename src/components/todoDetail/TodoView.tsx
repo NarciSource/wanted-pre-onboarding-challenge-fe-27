@@ -18,6 +18,7 @@ export default function TodoView({
             boxShadow="md"
             mt={3}
             p={5}
+            bg="white"
         >
             <Heading paddingTop={5}>{title}</Heading>
 

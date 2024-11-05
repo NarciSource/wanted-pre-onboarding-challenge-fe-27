@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Box, Button, Flex, Link, Stack, Text } from "@chakra-ui/react";
-import { useColorModeValue } from "@/components/ui/color-mode";
+import { ColorModeButton, useColorModeValue } from "@/components/ui/color-mode";
 
 import Popover from "./Popover";
 import LoginFormLayout from "@/components/auth/LoginFormLayout";
@@ -13,6 +13,7 @@ import useLoggedIn from "@/hooks/useLoggedIn";
 export default function Navbar(): React.ReactElement {
     const { isLoggedIn, logout } = useLoggedIn();
     const navigate = useNavigate();
+    const bgColor = useColorModeValue("gray.100", "gray.600");
 
     return (
         <Box
@@ -23,7 +24,7 @@ export default function Navbar(): React.ReactElement {
             width="100%"
             py={{ base: 2 }}
             px={{ base: 4 }}
-            bg={useColorModeValue("white", "white")}
+            bg={useColorModeValue("white", "gray.800")}
             borderBottomWidth={1}
             borderColor="gray.300"
             boxShadow="sd"
@@ -50,6 +51,7 @@ export default function Navbar(): React.ReactElement {
                                 logout();
                                 navigate("/");
                             }}
+                            bg={bgColor}
                         >
                             로그아웃
                         </Button>
@@ -57,6 +59,7 @@ export default function Navbar(): React.ReactElement {
                         <Popover name="로그인" Component={<LoginFormLayout />} />
                     )}
                     <Popover name="회원가입" Component={<SignUpFormLayout />} />
+                    <ColorModeButton bg={bgColor} />
                 </Stack>
             </Flex>
         </Box>
