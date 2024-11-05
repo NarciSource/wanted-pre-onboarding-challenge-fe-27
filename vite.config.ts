@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
                 "@": path.resolve(__dirname, "src"),
             },
         },
-        appType: "mpa",
+        appType: "spa",
         build: {
             rollupOptions: {
                 input: {
