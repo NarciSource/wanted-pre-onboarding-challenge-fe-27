@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { Box, Flex, For } from "@chakra-ui/react";
@@ -9,19 +9,25 @@ import readAllTodo from "@/api/services/todo/readAllTodo";
 import TodoCardItem from "./TodoCardItem";
 import TodoCardAddable from "./TodoCardAddable";
 import EmptyCardItem from "./EmptyCardItem";
+import HealthyCheckContext from "@/context/HealthyCheckContext";
 
 export default function TodoCardList(): React.ReactElement {
-    const { data, isFetching } = useQuery<undefined, TodoError, TodoListResponse>({
+    const { data, isLoading, refetch } = useQuery<undefined, TodoError, TodoListResponse>({
         queryKey: ["todoList"],
         queryFn: readAllTodo,
     });
+
+    const { serverHost } = useContext(HealthyCheckContext);
+
+    useEffect(() => {
+        refetch();
+    }, [serverHost, refetch]);
 
     return (
         <Box>
             <Flex direction="row" wrap="wrap" justify="flex-start">
                 <TodoCardAddable />
-                {isFetching && new Array(8).fill(0).map((_, i) => <EmptyCardItem key={i} />)}
-
+                {isLoading && new Array(8).fill(0).map((_, i) => <EmptyCardItem key={i} />)}
                 <For each={data?.slice().reverse()}>
                     {(each) => (
                         <Link to={`/detail/${each.id}`} key={each.id}>
