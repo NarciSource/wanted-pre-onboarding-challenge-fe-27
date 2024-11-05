@@ -1,5 +1,6 @@
-import { Card, Skeleton } from "@chakra-ui/react";
 import React from "react";
+
+import { Card, Skeleton } from "@chakra-ui/react";
 
 export default function EmptyCardItem(): React.ReactElement {
     return (
