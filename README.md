@@ -47,6 +47,10 @@
 
     -   [x] 수정되는 Todo의 내용이 목록에서도 실시간으로 반영되어야 합니다
 
+## 컴포넌트 구성
+
+![components](https://github.com/user-attachments/assets/d1803e7c-e84e-43b5-8ecf-c4e556e7bbd0)
+
 ## 폴더구조
 
 ```python
