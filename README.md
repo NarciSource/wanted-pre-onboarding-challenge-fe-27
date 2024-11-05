@@ -10,11 +10,11 @@
 ## 실행방법
 
 1. [서버 실행](https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api) (포트: 8080으로)
-2. [입장](https://narcisource.github.io/Sticky-Todo)
+2. [입장](https://narcisource.github.io/wanted-pre-onboarding-challenge-fe-27)
 
 ## 스크린샷
 
-![Sticky-Todo](https://github.com/user-attachments/assets/fb130609-8a78-48bb-b775-46468f9f635e)
+![Sticky-Todo](https://github.com/user-attachments/assets/b1918442-0660-499f-8f4f-f4e381aba310)
 
 ## 요구사항
 
