@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import AuthPage from "@/pages/auth/AuthPage";
 import TodoPage from "@/pages/todo/TodoPage";
 import TodoDetailPage from "@/pages/todo/TodoDetailPage";
 
@@ -16,10 +15,6 @@ const router = createBrowserRouter(
                     element: <TodoDetailPage />,
                 },
             ],
-        },
-        {
-            path: "/auth",
-            element: <AuthPage />,
         },
     ],
     {

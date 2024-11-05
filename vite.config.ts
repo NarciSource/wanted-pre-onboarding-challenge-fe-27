@@ -14,5 +14,14 @@ export default defineConfig(({ mode }) => {
                 "@": path.resolve(__dirname, "src"),
             },
         },
+        appType: "mpa",
+        build: {
+            rollupOptions: {
+                input: {
+                    main: "index.html",
+                    auth: "auth.html",
+                },
+            },
+        },
     };
 });
