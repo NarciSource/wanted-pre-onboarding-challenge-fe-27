@@ -22,8 +22,8 @@ export default function TodoCardList(): React.ReactElement {
 
                 <For each={data?.slice().reverse()}>
                     {(each) => (
-                        <Link to={`/detail/${each.id}`}>
-                            <TodoCardItem {...each} key={each.id} />
+                        <Link to={`/detail/${each.id}`} key={each.id}>
+                            <TodoCardItem {...each} />
                         </Link>
                     )}
                 </For>

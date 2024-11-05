@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
-import { Icon, Input, Stack } from "@chakra-ui/react";
-import { FaCheckCircle } from "react-icons/fa";
+import { Input, Stack } from "@chakra-ui/react";
+import { FaCircleCheck } from "react-icons/fa6";
 
 import HealthyCheckContext from "@/context/HealthyCheckContext";
 
@@ -15,9 +15,7 @@ export default function ServerHealthCheck(): React.ReactElement {
     return (
         <Stack direction="row" align="center">
             <Input value={serverHost} onChange={handleChange} placeholder="서버 주소 입력" />
-            <Icon fontSize="3xl" color={isServerOnline ? "green" : "red"}>
-                <FaCheckCircle />
-            </Icon>
+            <FaCircleCheck size="36" color={isServerOnline ? "green" : "red"} />
         </Stack>
     );
 }
