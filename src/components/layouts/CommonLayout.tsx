@@ -24,7 +24,7 @@ export default function CommonLayout({ children }: CommonLayoutProps): React.Rea
                 </Box>
             ) : (
                 <Flex justify="center" align="center">
-                    <Image src={`/images/logo.png`} alt="logo" align="center" w={700} />
+                    <Image src={`./images/logo.png`} alt="logo" align="center" w={700} />
                 </Flex>
             )}
             <Toaster />

@@ -31,7 +31,7 @@ export default function Navbar(): React.ReactElement {
             <Flex maxW="960px" h="60px" align="center" m="auto">
                 <Flex justify="center" flex={{ base: 1, md: "auto" }}>
                     <Link
-                        href="/"
+                        href="./"
                         fontFamily="heading"
                         fontSize="5xl"
                         color={useColorModeValue("gray.800", "white")}
