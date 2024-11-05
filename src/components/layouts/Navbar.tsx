@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 import { Box, Button, Flex, Link, Stack, Text } from "@chakra-ui/react";
 import { ColorModeButton, useColorModeValue } from "@/components/ui/color-mode";
+import { FcTodoList } from "react-icons/fc";
 
 import Popover from "./Popover";
 import LoginFormLayout from "@/components/auth/LoginFormLayout";
 import SignUpFormLayout from "@/components/auth/SignUpFormLayout";
-import { FcTodoList } from "react-icons/fc";
+import ServerHealthCheck from "@/components/serverHealth/ServerHealthCheck";
 import useLoggedIn from "@/hooks/useLoggedIn";
 
 export default function Navbar(): React.ReactElement {
@@ -30,6 +31,10 @@ export default function Navbar(): React.ReactElement {
             boxShadow="sd"
         >
             <Flex maxW="960px" h="60px" align="center" m="auto">
+                <Stack justify="flex-start">
+                    <ServerHealthCheck />
+                </Stack>
+
                 <Flex justify="center" flex={{ base: 1, md: "auto" }}>
                     <Link
                         href="./"
