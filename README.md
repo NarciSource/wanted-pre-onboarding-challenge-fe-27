@@ -51,6 +51,12 @@
 
 ![components](https://github.com/user-attachments/assets/d1803e7c-e84e-43b5-8ecf-c4e556e7bbd0)
 
+## 아키텍처
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/c8b1d33a-9afb-404a-8de7-26013937b95f" width="50%" />
+</p>
+
 ## 폴더구조
 
 ```python
