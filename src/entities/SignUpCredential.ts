@@ -5,10 +5,30 @@ export default class SignUpCredential {
     password: string;
     conformPassword: string;
 
-    constructor(email: string, password: string, confirmPassword: string) {
+    constructor(email: string, password: string, conformPassword: string) {
         this.email = email;
         this.password = password;
-        this.conformPassword = confirmPassword;
+        this.conformPassword = conformPassword;
+    }
+
+    static async validate({
+        email,
+        password,
+        conformPassword,
+    }: SignUpCredential): Promise<boolean> {
+        try {
+            await SignUpCredential.validateSchema.validate({
+                email,
+                password,
+                conformPassword,
+            });
+
+            return true;
+        } catch (error) {
+            console.error("유효성 검사 실패", error);
+
+            return false;
+        }
     }
 
     static validateSchema = Yup.object().shape({

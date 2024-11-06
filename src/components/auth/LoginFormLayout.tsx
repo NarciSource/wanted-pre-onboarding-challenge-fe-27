@@ -5,21 +5,20 @@ import { useMutation } from "@tanstack/react-query";
 import { Heading, Stack } from "@chakra-ui/react";
 
 import { UserResponse, UserError } from "@/api/userApi";
-import loginUser, { LoginParameters } from "@/api/services/user/loginUser";
+import { LoginParameters } from "@/api/services/user/fetchLogin";
 import LoginCredential from "@/entities/LoginCredential";
 import LoginForm from "@/components/auth/LoginForm";
+import login from "@/services/auth/login";
 
 export default function LoginFormLayout(): React.ReactElement {
     const navigate = useNavigate();
 
     const mutation = useMutation<UserResponse, UserError, LoginParameters>({
-        mutationFn: loginUser,
-        onSuccess: ({ token }) => {
-            localStorage["token"] = token;
+        mutationFn: login,
+        onSuccess: () => {
             navigate("/");
         },
         onError: (error) => {
-            localStorage.removeItem("token");
             console.error("로그인 실패", error);
         },
     });

@@ -5,7 +5,7 @@ export interface LoginParameters {
     password: string;
 }
 
-export default async function loginUser({
+export default async function fetchLogin({
     email,
     password,
 }: LoginParameters): Promise<UserResponse> {

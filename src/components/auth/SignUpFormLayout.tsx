@@ -5,21 +5,20 @@ import { Heading, Stack } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
 
 import { UserResponse, UserError } from "@/api/userApi";
-import signUpUser, { SignupParameters } from "@/api/services/user/signUpUser";
+import { SignupParameters } from "@/api/services/user/fetchSignUp";
 import SignUpCredential from "@/entities/SignUpCredential";
 import SignUpForm from "@/components/auth/SignUpForm";
+import signUp from "@/services/auth/signUp";
 
 export default function SignUpFormLayout(): React.ReactElement {
     const navigate = useNavigate();
 
     const mutation = useMutation<UserResponse, UserError, SignupParameters>({
-        mutationFn: signUpUser,
-        onSuccess: ({ token }) => {
-            localStorage["token"] = token;
+        mutationFn: signUp,
+        onSuccess: () => {
             navigate("/");
         },
         onError: (error) => {
-            localStorage.removeItem("token");
             console.error("회원가입 실패", error);
         },
     });
