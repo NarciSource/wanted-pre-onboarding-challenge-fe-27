@@ -7,7 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import { UserResponse, UserError } from "@/api/userApi";
 import { SignupParameters } from "@/api/services/user/fetchSignUp";
 import SignUpCredential from "@/entities/SignUpCredential";
-import SignUpForm from "@/components/auth/SignUpForm";
+import SignUpForm from "@/components/user/SignUpForm";
 import signUp from "@/services/user/signUp";
 
 export default function SignUpFormLayout(): React.ReactElement {

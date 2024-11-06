@@ -6,8 +6,8 @@ import { ColorModeButton, useColorModeValue } from "@/components/ui/color-mode";
 import { FcTodoList } from "react-icons/fc";
 
 import Popover from "./Popover";
-import LoginFormLayout from "@/components/auth/LoginFormLayout";
-import SignUpFormLayout from "@/components/auth/SignUpFormLayout";
+import LoginFormLayout from "@/components/user/LoginFormLayout";
+import SignUpFormLayout from "@/components/user/SignUpFormLayout";
 import ServerHealthCheck from "@/components/serverHealth/ServerHealthCheck";
 import useLoggedIn from "@/app/hooks/useLoggedIn";
 
