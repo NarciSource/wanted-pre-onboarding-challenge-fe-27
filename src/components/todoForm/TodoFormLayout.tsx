@@ -4,9 +4,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toaster } from "@/components/ui/toaster";
 
 import { TodoError, TodoResponse } from "@/api/todoApi";
-import createTodo from "@/api/services/todo/createTodo";
-import updateTodo, { TodoParameters } from "@/api/services/todo/updateTodo";
+import { TodoParameters } from "@/api/services/todo/updateTodo";
 import TodoForm from "./TodoForm";
+import upsetTodo from "@/services/todo/upsetTodo";
 
 export default function TodoLayout({
     id,
@@ -22,7 +22,7 @@ export default function TodoLayout({
     const queryClient = useQueryClient();
 
     const { mutate } = useMutation<TodoResponse, TodoError, TodoParameters>({
-        mutationFn: id ? updateTodo : createTodo,
+        mutationFn: upsetTodo,
         onSuccess: async () => {
             // 쿼리 식별자로 재요청
             await queryClient.refetchQueries({

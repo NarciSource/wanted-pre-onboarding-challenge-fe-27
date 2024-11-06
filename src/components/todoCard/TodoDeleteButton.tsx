@@ -6,7 +6,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toaster } from "@/components/ui/toaster";
 
 import { TodoError } from "@/api/todoApi";
-import deleteTodo, { TodoParameters } from "@/api/services/todo/deleteTodo";
+import { TodoParameters } from "@/api/services/todo/deleteTodo";
+import removeTodo from "@/services/todo/removeTodo";
 
 export default function TodoDelete({ todoId }: { todoId: string }) {
     const queryClient = useQueryClient();
@@ -14,7 +15,7 @@ export default function TodoDelete({ todoId }: { todoId: string }) {
     const navigate = useNavigate();
 
     const { mutate } = useMutation<boolean, TodoError, TodoParameters>({
-        mutationFn: deleteTodo,
+        mutationFn: () => removeTodo(todoId),
         onSuccess: async () => {
             await queryClient.refetchQueries({
                 queryKey: ["todoList"],
