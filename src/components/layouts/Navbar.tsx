@@ -9,7 +9,7 @@ import Popover from "./Popover";
 import LoginFormLayout from "@/components/auth/LoginFormLayout";
 import SignUpFormLayout from "@/components/auth/SignUpFormLayout";
 import ServerHealthCheck from "@/components/serverHealth/ServerHealthCheck";
-import useLoggedIn from "@/hooks/useLoggedIn";
+import useLoggedIn from "@/app/hooks/useLoggedIn";
 
 export default function Navbar(): React.ReactElement {
     const { isLoggedIn, logout } = useLoggedIn();

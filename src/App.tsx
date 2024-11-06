@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider as ChakraProvider } from "@/components/ui/provider";
 import { ColorModeProvider } from "@/components/ui/color-mode";
 import { Router } from "@remix-run/router";
-import { HealthyCheckProvider } from "@/context/HealthyCheckContext";
+import { HealthyCheckProvider } from "@/app/contexts/HealthyCheckContext";
 
 const queryClient = new QueryClient();
 

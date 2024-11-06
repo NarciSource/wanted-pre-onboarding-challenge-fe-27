@@ -8,7 +8,7 @@ import { TodoListResponse } from "@/api/todoApi";
 import TodoCardItem from "./TodoCardItem";
 import TodoCardAddable from "./TodoCardAddable";
 import EmptyCardItem from "./EmptyCardItem";
-import HealthyCheckContext from "@/context/HealthyCheckContext";
+import HealthyCheckContext from "@/app/contexts/HealthyCheckContext";
 import getAllTodos from "@/services/todo/getAllTodos";
 
 export default function TodoCardList(): React.ReactElement {

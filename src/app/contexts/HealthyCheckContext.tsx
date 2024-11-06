@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode } from "react";
 
-import useServerHealth from "@/hooks/useServerHealth";
+import useServerHealth from "@/app/hooks/useServerHealth";
 
 interface ContextType {
     serverHost: string;

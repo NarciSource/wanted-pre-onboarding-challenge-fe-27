@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Input, Stack } from "@chakra-ui/react";
 import { FaCircleCheck } from "react-icons/fa6";
 
-import HealthyCheckContext from "@/context/HealthyCheckContext";
+import HealthyCheckContext from "@/app/contexts/HealthyCheckContext";
 
 export default function ServerHealthCheck(): React.ReactElement {
     const { serverHost, setServerHost, isServerOnline } = useContext(HealthyCheckContext);

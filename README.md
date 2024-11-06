@@ -71,9 +71,17 @@ Sticky-Todo
 ├─ package-lock.json
 ├─ package.json
 ├─ public
+│  ├─ icons
+│  │  └─ todo_list.svg
+│  └─ images
+│     └─ logo.png
 ├─ README.md
 ├─ src
-│  ├─ api
+│  ├─ index.css
+│  ├─ main.tsx # /main 진입점
+│  ├─ auth.tsx # /auth 진입점
+│  ├─ App.tsx # 프로바이더 스택
+│  ├─ api # 외부 api 호출 설정
 │  │  ├─ interceptors # axios 인터셉트
 │  │  │  ├─ todoRequest.ts
 │  │  │  ├─ todoResponse.ts
@@ -88,18 +96,20 @@ Sticky-Todo
 │  │  │  │  ├─ readTodo.ts
 │  │  │  │  └─ updateTodo.ts
 │  │  │  └─ user
-│  │  │     ├─ loginUser.ts
-│  │  │     └─ signUpUser.ts
+│  │  │     ├─ fetchLogin.ts
+│  │  │     └─ fetchSignUp.ts
 │  │  ├─ todoApi.ts
 │  │  └─ userApi.ts
-│  ├─ App.tsx # 프로바이더 스택
-│  ├─ auth.tsx # 진입점
+│  ├─ app # 애플리케이션 설정
+│  │  ├─ contexts # 중앙 상태저장소
+│  │  │  └─ HealthyCheckContext.tsx
+│  │  ├─ hooks # 커스텀 훅
+│  │  │  ├─ useLoggedIn.ts
+│  │  │  └─ useServerHealth.ts
+│  │  └─ router
+│  │     ├─ authRouter.tsx
+│  │     └─ mainRouter.tsx
 │  ├─ components # 컴포넌트 모음
-│  │  ├─ auth
-│  │  │  ├─ LoginForm.tsx
-│  │  │  ├─ LoginFormLayout.tsx
-│  │  │  ├─ SignUpForm.tsx
-│  │  │  └─ SignUpFormLayout.tsx
 │  │  ├─ layouts
 │  │  │  ├─ CommonLayout.tsx
 │  │  │  ├─ Navbar.tsx
@@ -119,31 +129,36 @@ Sticky-Todo
 │  │  ├─ todoForm
 │  │  │  ├─ TodoForm.tsx
 │  │  │  └─ TodoFormLayout.tsx
-│  │  └─ ui
-│  ├─ context # 중앙 상태저장소
-│  │  └─ HealthyCheckContext.tsx
-│  ├─ entities # 도메인 객체
+│  │  ├─ ui
+│  │  └─ user
+│  │     ├─ LoginForm.tsx
+│  │     ├─ LoginFormLayout.tsx
+│  │     ├─ SignUpForm.tsx
+│  │     └─ SignUpFormLayout.tsx
+│  ├─ entities # 도메인 모델
 │  │  ├─ LoginCredential.ts
 │  │  ├─ SignUpCredential.ts
 │  │  └─ TodoItem.ts
-│  ├─ hooks # 커스터마이징 훅
-│  │  ├─ useLoggedIn.ts
-│  │  └─ useServerHealth.ts
-│  ├─ index.css
-│  ├─ main.tsx # 진입점
 │  ├─ pages # 페이지
 │  │  ├─ auth
 │  │  │  └─ AuthPage.tsx
-│  │  └─ todo # 라우터
+│  │  └─ todo
 │  │     ├─ TodoDetailPage.tsx
 │  │     └─ TodoPage.tsx
-│  ├─ router
-│  │  ├─ authRouter.tsx
-│  │  └─ mainRouter.tsx
+│  ├─ services # 애플리케이션 서비스
+│  │  ├─ todo
+│  │  │  ├─ getAllTodos.ts
+│  │  │  ├─ getTodo.ts
+│  │  │  ├─ removeTodo.ts
+│  │  │  └─ upsetTodo.ts
+│  │  └─ user
+│  │     ├─ login.ts
+│  │     └─ signUp.ts
 │  └─ vite-env.d.ts
 ├─ tsconfig.app.json
 ├─ tsconfig.json
 ├─ tsconfig.node.json
 ├─ vite.config.ts
 └─ vitest.workspace.ts
+
 ```

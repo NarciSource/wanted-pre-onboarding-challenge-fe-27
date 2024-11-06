@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { useColorModeValue } from "@/components/ui/color-mode";
 
 import Navbar from "./Navbar";
-import useLoggedIn from "@/hooks/useLoggedIn";
+import useLoggedIn from "@/app/hooks/useLoggedIn";
 
 interface CommonLayoutProps {
     children: (message: boolean) => React.ReactNode;

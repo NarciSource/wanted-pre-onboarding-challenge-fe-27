@@ -8,7 +8,7 @@ import { UserResponse, UserError } from "@/api/userApi";
 import { LoginParameters } from "@/api/services/user/fetchLogin";
 import LoginCredential from "@/entities/LoginCredential";
 import LoginForm from "@/components/auth/LoginForm";
-import login from "@/services/auth/login";
+import login from "@/services/user/login";
 
 export default function LoginFormLayout(): React.ReactElement {
     const navigate = useNavigate();

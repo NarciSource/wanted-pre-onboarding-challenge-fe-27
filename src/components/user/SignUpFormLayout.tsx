@@ -8,7 +8,7 @@ import { UserResponse, UserError } from "@/api/userApi";
 import { SignupParameters } from "@/api/services/user/fetchSignUp";
 import SignUpCredential from "@/entities/SignUpCredential";
 import SignUpForm from "@/components/auth/SignUpForm";
-import signUp from "@/services/auth/signUp";
+import signUp from "@/services/user/signUp";
 
 export default function SignUpFormLayout(): React.ReactElement {
     const navigate = useNavigate();
