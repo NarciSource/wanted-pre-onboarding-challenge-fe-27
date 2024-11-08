@@ -5,7 +5,6 @@ import { Heading, Stack } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
 
 import { UserResponse, UserError } from "@/api/userApi";
-import { SignupParameters } from "@/api/services/user/fetchSignUp";
 import SignUpCredential from "@/entities/SignUpCredential";
 import SignUpForm from "@/components/user/SignUpForm";
 import signUp from "@/services/user/signUp";
@@ -13,7 +12,7 @@ import signUp from "@/services/user/signUp";
 export default function SignUpFormLayout(): React.ReactElement {
     const navigate = useNavigate();
 
-    const mutation = useMutation<UserResponse, UserError, SignupParameters>({
+    const mutation = useMutation<UserResponse, UserError, SignUpCredential>({
         mutationFn: signUp,
         onSuccess: () => {
             navigate("/");

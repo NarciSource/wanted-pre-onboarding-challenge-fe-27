@@ -6,7 +6,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toaster } from "@/components/ui/toaster";
 
 import { TodoError } from "@/api/todoApi";
-import { TodoParameters } from "@/api/services/todo/deleteTodo";
 import removeTodo from "@/services/todo/removeTodo";
 
 export default function TodoDelete({ todoId }: { todoId: string }) {
@@ -14,8 +13,8 @@ export default function TodoDelete({ todoId }: { todoId: string }) {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const { mutate } = useMutation<boolean, TodoError, TodoParameters>({
-        mutationFn: () => removeTodo(todoId),
+    const { mutate } = useMutation<boolean, TodoError, string>({
+        mutationFn: removeTodo,
         onSuccess: async () => {
             await queryClient.refetchQueries({
                 queryKey: ["todoList"],
@@ -29,7 +28,7 @@ export default function TodoDelete({ todoId }: { todoId: string }) {
     });
 
     const onClick = () => {
-        mutate({ id: todoId });
+        mutate(todoId);
     };
 
     return (

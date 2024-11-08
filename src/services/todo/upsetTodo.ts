@@ -8,6 +8,8 @@ interface Parameters {
     content: string;
 }
 
-export default function upsetTodo({ id, title, content }: Parameters): Promise<TodoItem> {
-    return id ? updateTodo({ id, title, content }) : createTodo({ title, content });
+export default async function upsetTodo({ id, title, content }: Parameters): Promise<TodoItem> {
+    const r = id ? await updateTodo({ id, title, content }) : await createTodo({ title, content });
+
+    return new TodoItem(r.id, r.title, r.content, new Date(r.createdAt), new Date(r.updatedAt));
 }

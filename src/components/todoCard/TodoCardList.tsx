@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import { Box, Flex, For } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 
-import { TodoListResponse } from "@/api/todoApi";
 import TodoCardItem from "./TodoCardItem";
 import TodoCardAddable from "./TodoCardAddable";
 import EmptyCardItem from "./EmptyCardItem";
 import HealthyCheckContext from "@/app/contexts/HealthyCheckContext";
 import getAllTodos from "@/services/todo/getAllTodos";
+import TodoItem from "@/entities/TodoItem";
 
 export default function TodoCardList(): React.ReactElement {
-    const { data, isLoading, refetch } = useQuery<TodoListResponse>({
+    const { data, isLoading, refetch } = useQuery<TodoItem[]>({
         queryKey: ["todoList"],
         queryFn: getAllTodos,
     });

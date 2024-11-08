@@ -4,20 +4,9 @@ import { Flex, Text } from "@chakra-ui/react";
 import { Card } from "@chakra-ui/react/card";
 
 import TodoDeleteButton from "./TodoDeleteButton";
+import TodoItem from "@/entities/TodoItem";
 
-interface TodoItemParameters {
-    id: string;
-    title: string;
-    content: string;
-    createdAt: string;
-    updatedAt: string;
-}
-
-export default function TodoItemCard({
-    id,
-    title,
-    content,
-}: TodoItemParameters): React.ReactElement {
+export default function TodoItemCard({ id, title, content }: TodoItem): React.ReactElement {
     const colors = ["blue", "red", "green", "yellow", "purple", "teal", "orange"];
 
     const getRandomColor = () => {

@@ -3,10 +3,11 @@ import React from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toaster } from "@/components/ui/toaster";
 
-import { TodoError, TodoResponse } from "@/api/todoApi";
+import { TodoError } from "@/api/todoApi";
 import { TodoParameters } from "@/api/services/todo/updateTodo";
 import TodoForm from "./TodoForm";
 import upsetTodo from "@/services/todo/upsetTodo";
+import TodoItem from "@/entities/TodoItem";
 
 export default function TodoLayout({
     id,
@@ -21,7 +22,7 @@ export default function TodoLayout({
     // App.tsx에서 queryClient를 이미 생성했으므로 훅으로 접근
     const queryClient = useQueryClient();
 
-    const { mutate } = useMutation<TodoResponse, TodoError, TodoParameters>({
+    const { mutate } = useMutation<TodoItem, TodoError, TodoParameters>({
         mutationFn: upsetTodo,
         onSuccess: async () => {
             // 쿼리 식별자로 재요청

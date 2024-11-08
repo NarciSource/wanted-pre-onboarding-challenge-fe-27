@@ -5,7 +5,6 @@ import { useMutation } from "@tanstack/react-query";
 import { Heading, Stack } from "@chakra-ui/react";
 
 import { UserResponse, UserError } from "@/api/userApi";
-import { LoginParameters } from "@/api/services/user/fetchLogin";
 import LoginCredential from "@/entities/LoginCredential";
 import LoginForm from "@/components/user/LoginForm";
 import login from "@/services/user/login";
@@ -13,7 +12,7 @@ import login from "@/services/user/login";
 export default function LoginFormLayout(): React.ReactElement {
     const navigate = useNavigate();
 
-    const mutation = useMutation<UserResponse, UserError, LoginParameters>({
+    const mutation = useMutation<UserResponse, UserError, LoginCredential>({
         mutationFn: login,
         onSuccess: () => {
             navigate("/");

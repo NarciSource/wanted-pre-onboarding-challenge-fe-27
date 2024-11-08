@@ -5,16 +5,16 @@ import { useQuery } from "@tanstack/react-query";
 import { FaPencil } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 
-import { TodoResponse } from "@/api/todoApi";
 import TodoView from "./TodoView";
 import TodoEditable from "./TodoEditable";
 import getTodo from "@/services/todo/getTodo";
+import TodoItem from "@/entities/TodoItem";
 
 export default function TodoDetail({ todoId }: { todoId: string }): React.ReactElement {
-    const { data } = useQuery<TodoResponse>({
+    const { data } = useQuery<TodoItem, Error, TodoItem, [string, string]>({
         // todoView && todoId로 쿼리 업데이트
         queryKey: ["todoView", todoId],
-        queryFn: () => getTodo(todoId),
+        queryFn: ({ queryKey }) => getTodo(queryKey[1]),
         enabled: !!todoId,
         // 5분 동안 캐시된 데이터 사용
         staleTime: 1000 * 60 * 5,

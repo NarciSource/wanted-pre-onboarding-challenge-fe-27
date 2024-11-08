@@ -1,13 +1,7 @@
 import * as Yup from "yup";
 
 export default class LoginCredential {
-    email: string;
-    password: string;
-
-    constructor(email: string, password: string) {
-        this.email = email;
-        this.password = password;
-    }
+    constructor(public email: string, public password: string) {}
 
     static async validate({ email, password }: LoginCredential): Promise<boolean> {
         try {
