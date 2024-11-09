@@ -29,13 +29,14 @@ export default function TodoDetail({ todoId }: { todoId: string }): React.ReactE
     return (
         <>
             {data && (
-                <Box h="100%">
+                <Box h="100%" color="black">
                     <IconButton
                         onClick={toggleEditable}
                         mt={5}
                         colorPalette="blue"
                         size="sm"
-                        bg={{ base: "colorPalette.500", _dark: "colorPalette.400" }}
+                        bg="colorPalette.400"
+                        _hover={{ bg: "colorPalette.600" }}
                     >
                         {isEditable ? <FaSearch /> : <FaPencil />}
                     </IconButton>

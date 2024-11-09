@@ -43,7 +43,7 @@ export default function Navbar(): React.ReactElement {
                         color={useColorModeValue("gray.800", "white")}
                     >
                         <FcTodoList />
-                        <Text>todos</Text>
+                        <Text _hover={{ color: "#535bf2" }}>todos</Text>
                     </Link>
                 </Flex>
 

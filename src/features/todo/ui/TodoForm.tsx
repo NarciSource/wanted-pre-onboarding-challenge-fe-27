@@ -45,7 +45,8 @@ export default function TodoForm({
                     type="submit"
                     colorPalette="blue"
                     size="sm"
-                    bg={{ base: "colorPalette.600", _dark: "colorPalette.400" }}
+                    bg="colorPalette.400"
+                    _hover={{ bg: "colorPalette.600" }}
                     disabled={!isValid}
                 >
                     <FaPushed />
