@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
-import todoApi from "@/features/todo/lib/todoApi";
-import userApi from "@/pages/authPage/lib/userApi";
 import ping from "../lib/ping";
+import apiConfigEmitter from "../lib/apiConfigEmitters";
 
 export default function useServerHealth(
     url: string,
@@ -11,12 +10,17 @@ export default function useServerHealth(
 
     useEffect(() => {
         const handler = setTimeout(async () => {
-            const response = await ping(url);
-            setServerOnline(response);
-            localStorage.setItem("serverHost", url);
+            const isOnline: boolean = await ping(url);
 
-            userApi.defaults.baseURL = url + "/users";
-            todoApi.defaults.baseURL = url + "/todos";
+            // online 상태 설정
+            setServerOnline(isOnline);
+
+            // 새로운 url 설정
+            if (isOnline) {
+                localStorage.setItem("serverHost", url);
+
+                apiConfigEmitter.emitAll(url);
+            }
         }, 500);
 
         return () => {

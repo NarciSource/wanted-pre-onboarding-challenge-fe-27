@@ -1,13 +1,14 @@
 import axios from "axios";
 
-import userResponseInterceptor from "./userResponse";
+import apiConfig from "@/shared/lib/apiConfig";
+import userResponseInterceptor from "./userResponseInterceptor";
 
 const baseURL = import.meta.env.VITE_API_HOST + "/users";
 
-const userApi = axios.create({
-    baseURL,
-});
+const userApi = axios.create({ baseURL });
 
-userResponseInterceptor(userApi);
+const interceptors = [userResponseInterceptor];
+
+apiConfig("/users", userApi, interceptors);
 
 export default userApi;

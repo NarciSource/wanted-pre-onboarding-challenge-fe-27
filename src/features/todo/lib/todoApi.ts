@@ -1,15 +1,15 @@
 import axios from "axios";
 
-import todoRequestInterceptor from "./todoRequest";
-import todoResponseInterceptor from "./todoResponse";
+import apiConfig from "@/shared/lib/apiConfig";
+import todoRequestInterceptor from "./todoRequestInterceptor";
+import todoResponseInterceptor from "./todoResponseInterceptor";
 
 const baseURL = import.meta.env.VITE_API_HOST + "/todos";
 
-const todoApi = axios.create({
-    baseURL,
-});
+const todoApi = axios.create({ baseURL });
 
-todoRequestInterceptor(todoApi);
-todoResponseInterceptor(todoApi);
+const interceptors = [todoRequestInterceptor, todoResponseInterceptor];
+
+apiConfig("/todos", todoApi, interceptors);
 
 export default todoApi;
