@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import ping from "../lib/ping";
-import apiConfigEmitter from "../lib/apiConfigEmitters";
+import ping from "./ping";
+import apiConfigEmitter from "./apiConfigEmitters";
 
 export default function useServerHealth(
     url: string,

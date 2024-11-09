@@ -1,6 +1,6 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, ReactNode, useState } from "react";
 
-import useServerHealth from "../hooks/useServerHealth";
+import useServerHealth from "@/shared/lib/useServerHealth";
 
 interface ContextType {
     serverHost: string;
@@ -18,6 +18,8 @@ const defaultContextValue: ContextType = {
 
 const HealthyCheckContext = createContext<ContextType>(defaultContextValue);
 
+export default HealthyCheckContext;
+
 export const HealthyCheckProvider = ({ children }: { children: ReactNode }) => {
     const [serverHost, setServerHost] = useState<string>(() => {
         return localStorage.getItem("serverHost") || import.meta.env.VITE_API_HOST;
@@ -32,5 +34,3 @@ export const HealthyCheckProvider = ({ children }: { children: ReactNode }) => {
         </HealthyCheckContext.Provider>
     );
 };
-
-export default HealthyCheckContext;

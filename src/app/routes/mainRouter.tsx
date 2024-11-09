@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import TodoPage from "@/pages/todoPage";
-import TodoDetailPage from "@/pages/todoDetailPage";
+
+import TodoPage from "@/pages/todo";
+import TodoDetailPage from "@/pages/todoDetail";
 
 const basename = import.meta.env.VITE_PUBLIC_URL || "/";
 

@@ -9,7 +9,7 @@ import TodoCardAddable from "./TodoCardAddable";
 import EmptyCardItem from "./EmptyCardItem";
 import TodoItem from "@/entities/TodoItem";
 import getAllTodos from "@/features/todo/services/getAllTodos";
-import HealthyCheckContext from "@/shared/contexts/HealthyCheckContext";
+import HealthyCheckContext from "@/shared/HealthyCheckContext";
 
 export default function TodoCardList(): React.ReactElement {
     const { data, isLoading, refetch } = useQuery<TodoItem[]>({

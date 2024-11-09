@@ -9,7 +9,7 @@ import {
     PopoverBody,
     PopoverCloseTrigger,
 } from "@chakra-ui/react";
-import { useColorModeValue } from "../../widgets/chakra-ui/color-mode";
+import { useColorModeValue } from "@/widgets/chakra-ui/color-mode";
 
 export default function Popover({
     name,

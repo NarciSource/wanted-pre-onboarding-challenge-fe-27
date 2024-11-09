@@ -1,4 +1,5 @@
 import { AxiosInstance } from "axios";
+
 import apiConfigEmitter from "@/shared/lib/apiConfigEmitters";
 
 export default function apiConfig(
@@ -7,7 +8,7 @@ export default function apiConfig(
     interceptors?: ((i: AxiosInstance) => void)[],
 ) {
     if (interceptors) {
-        for (let interceptor of interceptors) {
+        for (const interceptor of interceptors) {
             interceptor(axiosInstance);
         }
     }

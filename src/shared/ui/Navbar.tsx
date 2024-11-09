@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 import { Box, Button, Flex, Link, Stack, Text } from "@chakra-ui/react";
 import { FcTodoList } from "react-icons/fc";
-import { useColorModeValue, ColorModeButton } from "../../widgets/chakra-ui/color-mode";
+import { useColorModeValue, ColorModeButton } from "@/widgets/chakra-ui/color-mode";
 
+import LoginFormLayout from "@/pages/auth/ui/LoginFormLayout";
+import SignUpFormLayout from "@/pages/auth/ui/SignUpFormLayout";
 import Popover from "./Popover";
-import LoginFormLayout from "@/pages/authPage/ui/LoginFormLayout";
-import SignUpFormLayout from "@/pages/authPage/ui/SignUpFormLayout";
-import useLoggedIn from "../hooks/useLoggedIn";
+import useLoggedIn from "../lib/useLoggedIn";
 import ServerHealthCheck from "./ServerHealthCheck";
 
 export default function Navbar(): React.ReactElement {

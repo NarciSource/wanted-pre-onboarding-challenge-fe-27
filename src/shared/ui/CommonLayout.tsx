@@ -1,10 +1,10 @@
 import React from "react";
 
 import { Box, Flex, Image } from "@chakra-ui/react";
-import { useColorModeValue } from "../../widgets/chakra-ui/color-mode";
-import { Toaster } from "../../widgets/chakra-ui/toaster";
+import { useColorModeValue } from "@/widgets/chakra-ui/color-mode";
+import { Toaster } from "@/widgets/chakra-ui/toaster";
 
-import useLoggedIn from "@/shared/hooks/useLoggedIn";
+import useLoggedIn from "@/shared/lib/useLoggedIn";
 import Navbar from "./Navbar";
 
 interface CommonLayoutProps {

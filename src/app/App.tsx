@@ -5,7 +5,7 @@ import { Router } from "@remix-run/router";
 
 import { Provider as ChakraProvider } from "@/widgets/chakra-ui/provider";
 import { ColorModeProvider } from "@/widgets/chakra-ui/color-mode";
-import { HealthyCheckProvider } from "@/shared/contexts/HealthyCheckContext";
+import { HealthyCheckProvider } from "@/shared/HealthyCheckContext";
 
 const queryClient = new QueryClient();
 

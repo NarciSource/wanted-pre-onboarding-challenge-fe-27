@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "test": "vitest",
-    "lint": "eslint .",
+    "lint": "npx steiger ./src",
     "preview": "vite preview",
     "test:browser": "vitest --workspace=vitest.workspace.ts",
     "deploy": "gh-pages -d dist"
