@@ -76,89 +76,103 @@ Sticky-Todo
 │  └─ images
 │     └─ logo.png
 ├─ README.md
-├─ src
-│  ├─ index.css
-│  ├─ main.tsx # /main 진입점
-│  ├─ auth.tsx # /auth 진입점
-│  ├─ App.tsx # 프로바이더 스택
-│  ├─ api # 외부 api 호출 설정
-│  │  ├─ interceptors # axios 인터셉트
-│  │  │  ├─ todoRequest.ts
-│  │  │  ├─ todoResponse.ts
-│  │  │  └─ userResponse.ts
-│  │  ├─ services # 서비스별 api 호출 함수
-│  │  │  ├─ serverHealthy
-│  │  │  │  └─ ping.ts
-│  │  │  ├─ todo
-│  │  │  │  ├─ createTodo.ts
-│  │  │  │  ├─ deleteTodo.ts
-│  │  │  │  ├─ readAllTodo.ts
-│  │  │  │  ├─ readTodo.ts
-│  │  │  │  └─ updateTodo.ts
-│  │  │  └─ user
-│  │  │     ├─ fetchLogin.ts
-│  │  │     └─ fetchSignUp.ts
-│  │  ├─ todoApi.ts
-│  │  └─ userApi.ts
-│  ├─ app # 애플리케이션 설정
-│  │  ├─ contexts # 중앙 상태저장소
-│  │  │  └─ HealthyCheckContext.tsx
-│  │  ├─ hooks # 커스텀 훅
-│  │  │  ├─ useLoggedIn.ts
-│  │  │  └─ useServerHealth.ts
-│  │  └─ router
-│  │     ├─ authRouter.tsx
-│  │     └─ mainRouter.tsx
-│  ├─ components # 컴포넌트 모음
-│  │  ├─ layouts
-│  │  │  ├─ CommonLayout.tsx
-│  │  │  ├─ Navbar.tsx
-│  │  │  └─ Popover.tsx
-│  │  ├─ serverHealth
-│  │  │  └─ ServerHealthCheck.tsx
-│  │  ├─ todoCard
-│  │  │  ├─ EmptyCardItem.tsx
-│  │  │  ├─ TodoCardAddable.tsx
-│  │  │  ├─ TodoCardItem.tsx
-│  │  │  ├─ TodoCardList.tsx
-│  │  │  └─ TodoDeleteButton.tsx
-│  │  ├─ todoDetail
-│  │  │  ├─ TodoDetail.tsx
-│  │  │  ├─ TodoEditable.tsx
-│  │  │  └─ TodoView.tsx
-│  │  ├─ todoForm
-│  │  │  ├─ TodoForm.tsx
-│  │  │  └─ TodoFormLayout.tsx
-│  │  ├─ ui
-│  │  └─ user
-│  │     ├─ LoginForm.tsx
-│  │     ├─ LoginFormLayout.tsx
-│  │     ├─ SignUpForm.tsx
-│  │     └─ SignUpFormLayout.tsx
+├─ src # FSD
+│  ├─ app # 애플리케이션 관리
+│  │  ├─ App.tsx # 프로바이더 스택
+│  │  ├─ main.tsx # /main 진입점
+│  │  ├─ auth.tsx # /auth 진입점
+│  │  ├─ routes # 라우터
+│  │  │  ├─ authRouter.tsx
+│  │  │  └─ mainRouter.tsx
+│  │  └─ vite-env.d.ts
 │  ├─ entities # 도메인 모델
 │  │  ├─ LoginCredential.ts
 │  │  ├─ SignUpCredential.ts
 │  │  └─ TodoItem.ts
-│  ├─ pages # 페이지
-│  │  ├─ auth
-│  │  │  └─ AuthPage.tsx
+│  ├─ features # 기능 구현체
 │  │  └─ todo
-│  │     ├─ TodoDetailPage.tsx
-│  │     └─ TodoPage.tsx
-│  ├─ services # 애플리케이션 서비스
-│  │  ├─ todo
-│  │  │  ├─ getAllTodos.ts
-│  │  │  ├─ getTodo.ts
-│  │  │  ├─ removeTodo.ts
-│  │  │  └─ upsetTodo.ts
-│  │  └─ user
-│  │     ├─ login.ts
-│  │     └─ signUp.ts
-│  └─ vite-env.d.ts
+│  │     ├─ api # 백엔드 상호작용
+│  │     │  ├─ createTodo.ts
+│  │     │  ├─ deleteTodo.ts
+│  │     │  ├─ readAllTodo.ts
+│  │     │  ├─ readTodo.ts
+│  │     │  └─ updateTodo.ts
+│  │     ├─ lib # 라이브러리 코드
+│  │     │  ├─ todoApi.ts
+│  │     │  ├─ todoRequest.ts
+│  │     │  └─ todoResponse.ts
+│  │     ├─ model # 데이터모델
+│  │     │  ├─ request
+│  │     │  │  ├─ TodoCreateRequestDTO.ts
+│  │     │  │  ├─ TodoIdRequestDTO.ts
+│  │     │  │  └─ TodoUpdateRequestDTO.ts
+│  │     │  ├─ response
+│  │     │  │  ├─ TodoListResponseDTO.ts
+│  │     │  │  └─ TodoResponseDTO.ts
+│  │     │  ├─ TodoError.ts
+│  │     │  └─ TodoFormProps.ts
+│  │     ├─ services # 애플리케이션 서비스
+│  │     │  ├─ getAllTodos.ts
+│  │     │  ├─ getTodo.ts
+│  │     │  ├─ removeTodo.ts
+│  │     │  └─ upsetTodo.ts
+│  │     └─ ui # 컴포넌트
+│  │        ├─ TodoForm.tsx
+│  │        └─ TodoFormLayout.tsx
+│  ├─ pages # 페이지
+│  │  ├─ authPage
+│  │  │  ├─ api
+│  │  │  │  ├─ fetchLogin.ts
+│  │  │  │  └─ fetchSignUp.ts
+│  │  │  ├─ index.tsx
+│  │  │  ├─ lib
+│  │  │  │  ├─ userApi.ts
+│  │  │  │  └─ userResponse.ts
+│  │  │  ├─ model
+│  │  │  │  ├─ LoginRequestDTO.ts
+│  │  │  │  ├─ SignupRequestDTO.ts
+│  │  │  │  ├─ UserError.ts
+│  │  │  │  └─ UserResponseDTO.ts
+│  │  │  ├─ services
+│  │  │  │  ├─ login.ts
+│  │  │  │  └─ signUp.ts
+│  │  │  └─ ui
+│  │  │     ├─ LoginForm.tsx
+│  │  │     ├─ LoginFormLayout.tsx
+│  │  │     ├─ SignUpForm.tsx
+│  │  │     └─ SignUpFormLayout.tsx
+│  │  ├─ todoDetailPage
+│  │  │  ├─ index.tsx
+│  │  │  └─ ui
+│  │  │     ├─ TodoDetail.tsx
+│  │  │     ├─ TodoEditable.tsx
+│  │  │     └─ TodoView.tsx
+│  │  └─ todoPage
+│  │     ├─ index.tsx
+│  │     └─ ui
+│  │        ├─ EmptyCardItem.tsx
+│  │        ├─ TodoCardAddable.tsx
+│  │        ├─ TodoCardItem.tsx
+│  │        ├─ TodoCardList.tsx
+│  │        └─ TodoDeleteButton.tsx
+│  ├─ shared # 공용
+│  │  ├─ contexts
+│  │  │  └─ HealthyCheckContext.tsx
+│  │  ├─ hooks
+│  │  │  ├─ useLoggedIn.ts
+│  │  │  └─ useServerHealth.ts
+│  │  ├─ lib
+│  │  │  └─ ping.ts
+│  │  └─ ui
+│  │     ├─ CommonLayout.tsx
+│  │     ├─ Navbar.tsx
+│  │     ├─ Popover.tsx
+│  │     └─ ServerHealthCheck.tsx
+│  └─ widgets # 재사용 UI 컴포넌트
+│     └─ chakra-ui # third-party
 ├─ tsconfig.app.json
 ├─ tsconfig.json
 ├─ tsconfig.node.json
 ├─ vite.config.ts
 └─ vitest.workspace.ts
-
 ```
