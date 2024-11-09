@@ -57,6 +57,10 @@
 <img src="https://github.com/user-attachments/assets/5d7b1001-b300-4790-895d-07c201985fbd" width="50%" />
 </p>
 
+## 의존성 역전
+
+![dip](https://github.com/user-attachments/assets/643bce6c-cef6-4af6-9302-02e7e230836b)
+
 ## 폴더구조
 
 ```python
@@ -99,8 +103,8 @@ Sticky-Todo
 │  │     │  └─ updateTodo.ts
 │  │     ├─ lib # 라이브러리 코드
 │  │     │  ├─ todoApi.ts
-│  │     │  ├─ todoRequest.ts
-│  │     │  └─ todoResponse.ts
+│  │     │  ├─ todoRequestInterceptor.ts
+│  │     │  └─ todoResponseInterceptor.ts
 │  │     ├─ model # 데이터모델
 │  │     │  ├─ request
 │  │     │  │  ├─ TodoCreateRequestDTO.ts
@@ -127,7 +131,7 @@ Sticky-Todo
 │  │  │  ├─ index.tsx
 │  │  │  ├─ lib
 │  │  │  │  ├─ userApi.ts
-│  │  │  │  └─ userResponse.ts
+│  │  │  │  └─ userResponseInterceptor.ts
 │  │  │  ├─ model
 │  │  │  │  ├─ LoginRequestDTO.ts
 │  │  │  │  ├─ SignupRequestDTO.ts
@@ -162,7 +166,9 @@ Sticky-Todo
 │  │  │  ├─ useLoggedIn.ts
 │  │  │  └─ useServerHealth.ts
 │  │  ├─ lib
-│  │  │  └─ ping.ts
+│  │  │  ├─ apiConfig.ts # DIP 래퍼
+│  │  │  ├─ apiConfigEmitters.ts # 이벤트 옵저버
+│  │  │  └─ ping.ts # 서버 상태 확인
 │  │  └─ ui
 │  │     ├─ CommonLayout.tsx
 │  │     ├─ Navbar.tsx
