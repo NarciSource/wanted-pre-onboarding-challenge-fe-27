@@ -47,6 +47,15 @@
 
     -   [x] 수정되는 Todo의 내용이 목록에서도 실시간으로 반영되어야 합니다
 
+### Assignment 3 - 변경된 API 스펙
+
+-   Todo 생성 시 priority 가 추가되었습니다. urgent, normal, low 세 단계의 우선 순위를 지원합니다.  
+    /todos API에 대하여 다음과 같은 쿼리스트링 요청을 지원합니다.
+    -   [ ] 우선순위 필터링: /todos?priorityFilter=urgent
+    -   [ ] 키워드 검색: /todos?keyword=meeting
+    -   [ ] 정렬 및 순서 지정: /todos?sort=createdAt&order=desc
+    -   [ ] 조합된 조건: /todos?priorityFilter=normal&sort=updatedAt&order=asc&keyword=project
+
 ## 컴포넌트 구성
 
 ![components](https://github.com/user-attachments/assets/d1803e7c-e84e-43b5-8ecf-c4e556e7bbd0)
