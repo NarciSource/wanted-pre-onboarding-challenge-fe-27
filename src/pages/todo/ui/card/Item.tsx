@@ -30,16 +30,18 @@ export default function TodoItemCard({
             bg={getRandomColor()}
             color="black"
         >
-            <Card.Header position="absolute">
-                <HStack>
+            <Card.Header>
+                <HStack justify="space-between">
                     {priority && <PriorityIcon priority={priority} />}
-                    <Card.Title>{title}</Card.Title>
+                    <Card.Title whiteSpace="nowrap" overflow="hidden" textOverflow="ellipsis">
+                        {title}
+                    </Card.Title>
+                    <Flex>
+                        <TodoDeleteButton todoId={id} />
+                    </Flex>
                 </HStack>
             </Card.Header>
             <Card.Body>
-                <Flex justify="flex-end">
-                    <TodoDeleteButton todoId={id} />
-                </Flex>
                 <Text lineClamp="9">{content}</Text>
             </Card.Body>
         </Card.Root>

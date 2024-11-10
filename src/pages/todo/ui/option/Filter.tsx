@@ -21,7 +21,7 @@ export default function TodoFilterOption({
     return (
         <HStack align="center">
             <IoOptions />
-            <Text>필터링</Text>
+            <Text whiteSpace="nowrap">필터링</Text>
 
             <Switch
                 checked={filterChecked}
@@ -38,17 +38,15 @@ export default function TodoFilterOption({
                 size="sm"
                 _disabled={{ opacity: "0.5" }}
             >
-                <HStack>
-                    <Radio title="시급" value="urgent" px={1} _checked={{ color: "red" }}>
-                        <FaFire />
-                    </Radio>
-                    <Radio title="보통" value="normal" px={1} _checked={{ color: "green" }}>
-                        <FaBell />
-                    </Radio>
-                    <Radio title="낮음" value="low" px={1} _checked={{ color: "orange" }}>
-                        <RiZzzFill />
-                    </Radio>
-                </HStack>
+                <Radio title="시급" value="urgent" px={1} _checked={{ color: "red" }}>
+                    <FaFire />
+                </Radio>
+                <Radio title="보통" value="normal" px={1} _checked={{ color: "green" }}>
+                    <FaBell />
+                </Radio>
+                <Radio title="낮음" value="low" px={1} _checked={{ color: "orange" }}>
+                    <RiZzzFill />
+                </Radio>
             </RadioGroup>
         </HStack>
     );

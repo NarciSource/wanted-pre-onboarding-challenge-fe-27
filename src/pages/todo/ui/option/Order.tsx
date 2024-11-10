@@ -17,7 +17,9 @@ export default function TodoOrderOption({
     return (
         <HStack align="center">
             <IoOptions />
-            <Text color="gray">정렬</Text>
+            <Text color="gray" whiteSpace="nowrap">
+                정렬
+            </Text>
 
             <RadioGroup
                 value={order}
