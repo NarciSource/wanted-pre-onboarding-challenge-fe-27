@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Box, Flex, For } from "@chakra-ui/react";
 
-import TodoCardItem from "./TodoCardItem";
-import TodoCardAddable from "./TodoCardAddable";
-import EmptyCardItem from "./EmptyCardItem";
+import TodoCardItem from "./card/Item";
+import TodoCardAddable from "./card/Addable";
+import EmptyCardItem from "./card/EmptyItem";
 import TodoItem from "@/entities/TodoItem";
 import getAllTodos from "@/features/todo/services/getAllTodos";
 import HealthyCheckContext from "@/shared/HealthyCheckContext";
-import TodoPageOptions from "./TodoPageOptions";
+import TodoPageOptions from "./PageOptions";
 
 export default function TodoCardList(): React.ReactElement {
     const [options, setOptions] = useState<{

@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 import { Box, Flex } from "@chakra-ui/react";
 
-import TodoCardList from "./ui/TodoCardList";
+import TodoCardList from "./ui/CardList";
 import CommonLayout from "@/shared/ui/CommonLayout";
 import AuthPanel from "@/features/auth/ui/AuthPanel";
 

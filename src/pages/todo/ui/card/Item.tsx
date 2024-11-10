@@ -4,7 +4,7 @@ import { Flex, HStack, Text } from "@chakra-ui/react";
 import { Card } from "@chakra-ui/react/card";
 
 import TodoItem from "@/entities/TodoItem";
-import TodoDeleteButton from "./TodoDeleteButton";
+import TodoDeleteButton from "./DeleteButton";
 import PriorityIcon from "@/shared/ui/PriorityIcon";
 
 export default function TodoItemCard({

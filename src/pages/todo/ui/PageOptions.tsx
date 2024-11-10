@@ -3,10 +3,10 @@ import { RxDividerVertical } from "react-icons/rx";
 
 import { HStack, Icon } from "@chakra-ui/react";
 
-import TodoFilterOption from "./TodoFilterOption";
-import TodoOrderOption from "./TodoOrderOption";
-import TodoSortOption from "./TodoSortOption";
-import TodoKeywordOption from "./TodoKeywordOption";
+import TodoFilterOption from "./option/Filter";
+import TodoOrderOption from "./option/Order";
+import TodoSortOption from "./option/Sort";
+import TodoKeywordOption from "./option/Keyword";
 
 type Options = {
     sort: "createdAt" | "updatedAt" | "priority";
