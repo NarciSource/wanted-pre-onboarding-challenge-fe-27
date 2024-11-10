@@ -1,7 +1,7 @@
 import TodoItem from "@/entities/TodoItem";
 import createTodo from "../api/createTodo";
 import updateTodo from "../api/updateTodo";
-import TodoUpdateRequestDTO from "../model/request/TodoUpdateRequestDTO";
+import TodoUpdateRequestDTO from "../model/request/UpdateRequestDTO";
 
 export default async function upsetTodo({
     id,

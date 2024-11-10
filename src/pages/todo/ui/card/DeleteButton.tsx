@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toaster } from "@/widgets/chakra-ui/toaster";
 
-import TodoError from "@/features/todo/model/TodoError";
+import TodoError from "@/features/todo/model/Error";
 import removeTodo from "@/features/todo/services/removeTodo";
 
 export default function TodoDelete({ todoId }: { todoId: string }) {

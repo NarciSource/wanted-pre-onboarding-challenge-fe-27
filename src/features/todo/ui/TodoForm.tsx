@@ -7,7 +7,7 @@ import { Field } from "@/widgets/chakra-ui/field";
 import { FaPushed } from "react-icons/fa6";
 
 import TodoItem from "@/entities/TodoItem";
-import { TodoFormProps, CreateFormData, UpdateFormData } from "../model/TodoFormProps";
+import { TodoFormProps, CreateFormData, UpdateFormData } from "../model/FormProps";
 import PriorityRadio from "@/shared/ui/PriorityRadio";
 
 export default function TodoForm({

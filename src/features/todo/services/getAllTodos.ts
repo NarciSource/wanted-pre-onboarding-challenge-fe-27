@@ -1,7 +1,7 @@
 import TodoItem from "@/entities/TodoItem";
 import readAllTodo from "../api/readAllTodo";
 import { getPriority } from "@/shared/lib/Priority";
-import TodosRequestDTO from "../model/request/TodosRequestDTO";
+import TodosRequestDTO from "../model/request/ListReadRequestDTO";
 
 export default async function getAllTodos({ params }: TodosRequestDTO): Promise<TodoItem[]> {
     const todos = await readAllTodo({ params });

@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 
-import TodoError from "../model/TodoError";
+import TodoError from "../model/Error";
 
 export default (axiosInstance: AxiosInstance) => {
     axiosInstance.interceptors.response.use(

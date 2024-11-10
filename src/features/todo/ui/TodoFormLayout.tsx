@@ -4,8 +4,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toaster } from "@/widgets/chakra-ui/toaster";
 
 import TodoItem from "@/entities/TodoItem";
-import TodoUpdateRequestDTO from "../model/request/TodoUpdateRequestDTO";
-import TodoError from "../model/TodoError";
+import TodoUpdateRequestDTO from "../model/request/UpdateRequestDTO";
+import TodoError from "../model/Error";
 import upsetTodo from "../services/upsetTodo";
 import TodoForm from "./TodoForm";
 

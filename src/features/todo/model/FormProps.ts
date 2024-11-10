@@ -1,5 +1,5 @@
 import TodoItem from "@/entities/TodoItem";
-import TodoUpdateRequestDTO from "./request/TodoUpdateRequestDTO";
+import TodoUpdateRequestDTO from "./request/UpdateRequestDTO";
 
 export interface TodoFormProps {
     id?: string;
