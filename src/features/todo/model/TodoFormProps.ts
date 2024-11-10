@@ -8,5 +8,9 @@ export interface TodoFormProps {
     onSubmit: (data: TodoUpdateRequestDTO) => void;
 }
 
-export type CreateFormData = Pick<TodoItem, "title" | "content">;
+export type CreateFormData = {
+    priority?: "urgent" | "normal" | "low";
+    title: string;
+    content: string;
+  };
 export type UpdateFormData = TodoItem;

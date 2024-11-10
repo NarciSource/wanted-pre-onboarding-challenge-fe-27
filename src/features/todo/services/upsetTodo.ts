@@ -1,15 +1,17 @@
 import TodoItem from "@/entities/TodoItem";
 import createTodo from "../api/createTodo";
 import updateTodo from "../api/updateTodo";
+import TodoUpdateRequestDTO from "../model/request/TodoUpdateRequestDTO";
 
-interface Parameters {
-    id?: string;
-    title: string;
-    content: string;
-}
-
-export default async function upsetTodo({ id, title, content }: Parameters): Promise<TodoItem> {
-    const r = id ? await updateTodo({ id, title, content }) : await createTodo({ title, content });
+export default async function upsetTodo({
+    id,
+    title,
+    content,
+    priority,
+}: TodoUpdateRequestDTO): Promise<TodoItem> {
+    const r = id
+        ? await updateTodo({ id, title, content, priority })
+        : await createTodo({ title, content, priority });
 
     return new TodoItem(r.id, r.title, r.content, new Date(r.createdAt), new Date(r.updatedAt));
 }
