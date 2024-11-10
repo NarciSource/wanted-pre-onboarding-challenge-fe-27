@@ -15,7 +15,7 @@ export default function AuthPanel(): React.ReactElement {
     const bgColor = useColorModeValue("gray.100", "gray.600");
 
     return (
-        <Stack justify="flex-end" direction="row">
+        <Stack justify="flex-end" direction="row" color="black">
             {isLoggedIn ? (
                 <Button
                     size="sm"
