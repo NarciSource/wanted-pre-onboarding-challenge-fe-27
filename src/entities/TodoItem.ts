@@ -1,5 +1,11 @@
 import * as Yup from "yup";
 
+export enum Priority {
+    URGENT = "urgent",
+    NORMAL = "normal",
+    LOW = "low",
+}
+
 export default class TodoItem {
     constructor(
         public id: string,
@@ -7,6 +13,7 @@ export default class TodoItem {
         public content: string,
         public createdAt: Date,
         public updatedAt: Date,
+        public priority?: Priority,
     ) {}
 
     static validateSchema = Yup.object()
