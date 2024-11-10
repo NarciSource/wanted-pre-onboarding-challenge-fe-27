@@ -1,21 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
-import { Box, Button, Flex, Link, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Link, Stack, Text } from "@chakra-ui/react";
 import { FcTodoList } from "react-icons/fc";
-import { useColorModeValue, ColorModeButton } from "@/widgets/chakra-ui/color-mode";
+import { useColorModeValue } from "@/widgets/chakra-ui/color-mode";
 
-import LoginFormLayout from "@/pages/auth/ui/LoginFormLayout";
-import SignUpFormLayout from "@/pages/auth/ui/SignUpFormLayout";
-import Popover from "./Popover";
-import useLoggedIn from "../lib/useLoggedIn";
 import ServerHealthCheck from "./ServerHealthCheck";
 
-export default function Navbar(): React.ReactElement {
-    const { isLoggedIn, logout } = useLoggedIn();
-    const navigate = useNavigate();
-    const bgColor = useColorModeValue("gray.100", "gray.600");
-
+export default function Navbar({ AuthPanel }: { AuthPanel: React.ReactNode }): React.ReactElement {
     return (
         <Box
             zIndex={10}
@@ -47,25 +38,7 @@ export default function Navbar(): React.ReactElement {
                     </Link>
                 </Flex>
 
-                <Stack justify="flex-end" direction="row">
-                    {isLoggedIn ? (
-                        <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => {
-                                logout();
-                                navigate("/");
-                            }}
-                            bg={bgColor}
-                        >
-                            로그아웃
-                        </Button>
-                    ) : (
-                        <Popover name="로그인" Component={<LoginFormLayout />} />
-                    )}
-                    <Popover name="회원가입" Component={<SignUpFormLayout />} />
-                    <ColorModeButton bg={bgColor} />
-                </Stack>
+                {AuthPanel}
             </Flex>
         </Box>
     );

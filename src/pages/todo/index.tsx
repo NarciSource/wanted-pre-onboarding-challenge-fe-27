@@ -3,12 +3,13 @@ import { Outlet } from "react-router-dom";
 
 import { Box, Flex } from "@chakra-ui/react";
 
-import CommonLayout from "@/shared/ui/CommonLayout";
 import TodoCardList from "./ui/TodoCardList";
+import CommonLayout from "@/shared/ui/CommonLayout";
+import AuthPanel from "@/features/auth/ui/AuthPanel";
 
 export default function TodoPage(): React.ReactElement {
     return (
-        <CommonLayout>
+        <CommonLayout AuthPanel={<AuthPanel />}>
             {(isLoggedIn) =>
                 isLoggedIn ? (
                     <Flex>

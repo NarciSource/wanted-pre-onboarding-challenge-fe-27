@@ -9,15 +9,19 @@ import Navbar from "./Navbar";
 
 interface CommonLayoutProps {
     children: (message: boolean) => React.ReactNode;
+    AuthPanel?: React.ReactNode;
 }
 
-export default function CommonLayout({ children }: CommonLayoutProps): React.ReactElement {
+export default function CommonLayout({
+    children,
+    AuthPanel,
+}: CommonLayoutProps): React.ReactElement {
     const { isLoggedIn } = useLoggedIn();
 
     return (
         <div>
             <Flex justify="center">
-                <Navbar />
+                <Navbar AuthPanel={AuthPanel} />
             </Flex>
             <Box
                 px={{ base: 4 }}
