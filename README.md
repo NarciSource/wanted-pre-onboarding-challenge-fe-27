@@ -53,7 +53,7 @@
     /todos API에 대하여 다음과 같은 쿼리스트링 요청을 지원합니다.
     -   [ ] 우선순위 필터링: /todos?priorityFilter=urgent
     -   [ ] 키워드 검색: /todos?keyword=meeting
-    -   [ ] 정렬 및 순서 지정: /todos?sort=createdAt&order=desc
+    -   [x] 정렬 및 순서 지정: /todos?sort=createdAt&order=desc
     -   [ ] 조합된 조건: /todos?priorityFilter=normal&sort=updatedAt&order=asc&keyword=project
 
 ## 컴포넌트 구성
@@ -103,6 +103,27 @@ Sticky-Todo
 │  │  ├─ SignUpCredential.ts
 │  │  └─ TodoItem.ts
 │  ├─ features # 기능 구현체
+│  │  ├─ auth
+│  │  │  ├─ api
+│  │  │  │  ├─ fetchLogin.ts
+│  │  │  │  └─ fetchSignUp.ts
+│  │  │  ├─ lib
+│  │  │  │  ├─ userApi.ts
+│  │  │  │  └─ userResponseInterceptor.ts
+│  │  │  ├─ model
+│  │  │  │  ├─ LoginRequestDTO.ts
+│  │  │  │  ├─ SignupRequestDTO.ts
+│  │  │  │  ├─ UserError.ts
+│  │  │  │  └─ UserResponseDTO.ts
+│  │  │  ├─ services
+│  │  │  │  ├─ login.ts
+│  │  │  │  └─ signUp.ts
+│  │  │  └─ ui
+│  │  │     ├─ AuthPanel.tsx
+│  │  │     ├─ LoginForm.tsx
+│  │  │     ├─ LoginFormLayout.tsx
+│  │  │     ├─ SignUpForm.tsx
+│  │  │     └─ SignUpFormLayout.tsx
 │  │  └─ todo
 │  │     ├─ api # 백엔드 상호작용
 │  │     │  ├─ createTodo.ts
@@ -118,6 +139,7 @@ Sticky-Todo
 │  │     │  ├─ request
 │  │     │  │  ├─ TodoCreateRequestDTO.ts
 │  │     │  │  ├─ TodoIdRequestDTO.ts
+│  │     │  │  ├─ TodosRequestDTO.ts
 │  │     │  │  └─ TodoUpdateRequestDTO.ts
 │  │     │  ├─ response
 │  │     │  │  ├─ TodoListResponseDTO.ts
@@ -133,55 +155,40 @@ Sticky-Todo
 │  │        ├─ TodoForm.tsx
 │  │        └─ TodoFormLayout.tsx
 │  ├─ pages # 페이지
-│  │  ├─ authPage
-│  │  │  ├─ api
-│  │  │  │  ├─ fetchLogin.ts
-│  │  │  │  └─ fetchSignUp.ts
-│  │  │  ├─ index.tsx
-│  │  │  ├─ lib
-│  │  │  │  ├─ userApi.ts
-│  │  │  │  └─ userResponseInterceptor.ts
-│  │  │  ├─ model
-│  │  │  │  ├─ LoginRequestDTO.ts
-│  │  │  │  ├─ SignupRequestDTO.ts
-│  │  │  │  ├─ UserError.ts
-│  │  │  │  └─ UserResponseDTO.ts
-│  │  │  ├─ services
-│  │  │  │  ├─ login.ts
-│  │  │  │  └─ signUp.ts
-│  │  │  └─ ui
-│  │  │     ├─ LoginForm.tsx
-│  │  │     ├─ LoginFormLayout.tsx
-│  │  │     ├─ SignUpForm.tsx
-│  │  │     └─ SignUpFormLayout.tsx
-│  │  ├─ todoDetailPage
+│  │  ├─ auth
 │  │  │  ├─ index.tsx
 │  │  │  └─ ui
-│  │  │     ├─ TodoDetail.tsx
-│  │  │     ├─ TodoEditable.tsx
-│  │  │     └─ TodoView.tsx
-│  │  └─ todoPage
+│  │  │     └─ AuthView.tsx
+│  │  ├─ todo
+│  │  │  ├─ index.tsx
+│  │  │  └─ ui
+│  │  │     ├─ EmptyCardItem.tsx
+│  │  │     ├─ TodoCardAddable.tsx
+│  │  │     ├─ TodoCardItem.tsx
+│  │  │     ├─ TodoCardList.tsx
+│  │  │     ├─ TodoDeleteButton.tsx
+│  │  │     └─ TodoPageOptions.tsx
+│  │  └─ todoDetail
 │  │     ├─ index.tsx
 │  │     └─ ui
-│  │        ├─ EmptyCardItem.tsx
-│  │        ├─ TodoCardAddable.tsx
-│  │        ├─ TodoCardItem.tsx
-│  │        ├─ TodoCardList.tsx
-│  │        └─ TodoDeleteButton.tsx
+│  │        ├─ TodoDetail.tsx
+│  │        ├─ TodoEditable.tsx
+│  │        └─ TodoView.tsx
 │  ├─ shared # 공용
-│  │  ├─ contexts
-│  │  │  └─ HealthyCheckContext.tsx
-│  │  ├─ hooks
-│  │  │  ├─ useLoggedIn.ts
-│  │  │  └─ useServerHealth.ts
+│  │  ├─ HealthyCheckContext.tsx
 │  │  ├─ lib
 │  │  │  ├─ apiConfig.ts # DIP 래퍼
 │  │  │  ├─ apiConfigEmitters.ts # 이벤트 옵저버
-│  │  │  └─ ping.ts # 서버 상태 확인
+│  │  │  ├─ ping.ts # 서버 상태 확인
+│  │  │  ├─ Priority.ts
+│  │  │  ├─ useLoggedIn.ts
+│  │  │  └─ useServerHealth.ts
 │  │  └─ ui
 │  │     ├─ CommonLayout.tsx
 │  │     ├─ Navbar.tsx
 │  │     ├─ Popover.tsx
+│  │     ├─ PriorityIcon.tsx
+│  │     ├─ PriorityRadio.tsx
 │  │     └─ ServerHealthCheck.tsx
 │  └─ widgets # 재사용 UI 컴포넌트
 │     └─ chakra-ui # third-party
