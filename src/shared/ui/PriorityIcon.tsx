@@ -1,29 +1,26 @@
 import { Box } from "@chakra-ui/react";
-import { FaCircle } from "react-icons/fa6";
+import { FaBell, FaFire } from "react-icons/fa6";
 
 import Priority from "../lib/Priority";
+import { RiZzzFill } from "react-icons/ri";
 
 export default function PriorityIcon({ priority }: { priority: Priority }): React.ReactElement {
-    let color;
+    let component;
 
     switch (priority) {
         case Priority.URGENT:
-            color = "red";
+            component = <FaFire color="red" />;
             break;
         case Priority.NORMAL:
-            color = "yellow";
+            component = <FaBell color="green" />;
             break;
         case Priority.LOW:
-            color = "green";
+            component = <RiZzzFill color="orange" />;
             break;
         default:
-            color = "transparent";
+            component = null;
             break;
     }
 
-    return (
-        <Box>
-            <FaCircle color={color} />
-        </Box>
-    );
+    return <Box>{component}</Box>;
 }

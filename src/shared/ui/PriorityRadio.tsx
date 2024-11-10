@@ -22,7 +22,7 @@ export default function PriorityRadio<T extends FieldValues>({ control }: { cont
                     value="urgent"
                 />
                 <RadioCardItem
-                    colorPalette="yellow"
+                    colorPalette="green"
                     cursor="pointer"
                     border={0}
                     _checked={{ boxShadow: "none", bg: "transparent" }}
@@ -30,7 +30,7 @@ export default function PriorityRadio<T extends FieldValues>({ control }: { cont
                     value="normal"
                 />
                 <RadioCardItem
-                    colorPalette="green"
+                    colorPalette="yellow"
                     cursor="pointer"
                     border={0}
                     _checked={{ boxShadow: "none", bg: "transparent" }}
