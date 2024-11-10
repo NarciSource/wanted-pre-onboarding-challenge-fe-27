@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
-import { useController, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Flex, HStack, IconButton, Input, Stack, Textarea } from "@chakra-ui/react";
+import { Flex, IconButton, Input, Stack, Textarea } from "@chakra-ui/react";
 import { Field } from "@/widgets/chakra-ui/field";
 import { FaPushed } from "react-icons/fa6";
 
 import TodoItem from "@/entities/TodoItem";
 import { TodoFormProps, CreateFormData, UpdateFormData } from "../model/TodoFormProps";
-import { RadioCardItem, RadioCardRoot } from "@/shared/ui/radio-card";
+import PriorityRadio from "@/shared/ui/PriorityRadio";
 
 export default function TodoForm({
     id,
     title,
     content,
+    priority,
     onSubmit,
 }: TodoFormProps): React.ReactElement {
     const {
@@ -28,12 +29,6 @@ export default function TodoForm({
         mode: "onChange",
     });
 
-    // controlled 방식 특정 컴포넌트 제어
-    const { field } = useController({
-        control,
-        name: "priority",
-    });
-
     useEffect(() => {
         if (id) {
             setValue("id", id);
@@ -44,7 +39,10 @@ export default function TodoForm({
         if (content) {
             setValue("content", content);
         }
-    }, [id, title, content, setValue]);
+        if (priority) {
+            setValue("priority", priority);
+        }
+    }, [id, title, content, priority, setValue]);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -82,31 +80,7 @@ export default function TodoForm({
                     />
                 </Field>
 
-                <RadioCardRoot size="md" {...field}>
-                    <HStack>
-                        <RadioCardItem
-                            colorPalette="red"
-                            cursor="pointer"
-                            border={0}
-                            _checked={{ boxShadow: "none", bg: "transparent" }}
-                            value="urgent"
-                        />
-                        <RadioCardItem
-                            colorPalette="yellow"
-                            cursor="pointer"
-                            border={0}
-                            _checked={{ boxShadow: "none", bg: "transparent" }}
-                            value="normal"
-                        />
-                        <RadioCardItem
-                            colorPalette="green"
-                            cursor="pointer"
-                            border={0}
-                            _checked={{ boxShadow: "none", bg: "transparent" }}
-                            value="low"
-                        />
-                    </HStack>
-                </RadioCardRoot>
+                <PriorityRadio control={control} />
             </Stack>
         </form>
     );

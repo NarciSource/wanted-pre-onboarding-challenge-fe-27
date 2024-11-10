@@ -5,12 +5,13 @@ export interface TodoFormProps {
     id?: string;
     title?: string;
     content?: string;
+    priority?: "urgent" | "normal" | "low";
     onSubmit: (data: TodoUpdateRequestDTO) => void;
 }
 
 export type CreateFormData = {
-    priority?: "urgent" | "normal" | "low";
     title: string;
     content: string;
-  };
+    priority?: "urgent" | "normal" | "low";
+};
 export type UpdateFormData = TodoItem;

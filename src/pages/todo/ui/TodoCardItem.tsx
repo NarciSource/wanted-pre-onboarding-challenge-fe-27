@@ -1,12 +1,18 @@
 import React from "react";
 
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, HStack, Text } from "@chakra-ui/react";
 import { Card } from "@chakra-ui/react/card";
 
 import TodoItem from "@/entities/TodoItem";
 import TodoDeleteButton from "./TodoDeleteButton";
+import PriorityIcon from "@/shared/ui/PriorityIcon";
 
-export default function TodoItemCard({ id, title, content }: TodoItem): React.ReactElement {
+export default function TodoItemCard({
+    id,
+    title,
+    content,
+    priority,
+}: TodoItem): React.ReactElement {
     const colors = ["blue", "red", "green", "yellow", "purple", "teal", "orange"];
 
     const getRandomColor = () => {
@@ -25,7 +31,10 @@ export default function TodoItemCard({ id, title, content }: TodoItem): React.Re
             color="black"
         >
             <Card.Header position="absolute">
-                <Card.Title>{title}</Card.Title>
+                <HStack>
+                    {priority && <PriorityIcon priority={priority} />}
+                    <Card.Title>{title}</Card.Title>
+                </HStack>
             </Card.Header>
             <Card.Body>
                 <Flex justify="flex-end">

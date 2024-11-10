@@ -9,14 +9,11 @@ import TodoError from "../model/TodoError";
 import upsetTodo from "../services/upsetTodo";
 import TodoForm from "./TodoForm";
 
-export default function TodoLayout({
-    id,
-    title,
-    content,
-}: {
+export default function TodoLayout(params: {
     id?: string;
     title?: string;
     content?: string;
+    priority?: "urgent" | "normal" | "low";
 }): React.ReactElement {
     // 쿼리 캐시에 접근
     // App.tsx에서 queryClient를 이미 생성했으므로 훅으로 접근
@@ -32,7 +29,7 @@ export default function TodoLayout({
             // 여러 캐시 식별자를 요청
             // queryKey의 배열은 && 임
             await queryClient.refetchQueries({
-                queryKey: ["todoView", id],
+                queryKey: ["todoView", params.id],
             });
 
             toaster.create({ description: "Todos 업데이트 성공", type: "info" });
@@ -46,5 +43,5 @@ export default function TodoLayout({
         mutate(data);
     };
 
-    return <TodoForm id={id} title={title} content={content} onSubmit={handleSubmit} />;
+    return <TodoForm {...params} onSubmit={handleSubmit} />;
 }

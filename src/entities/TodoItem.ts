@@ -1,10 +1,6 @@
 import * as Yup from "yup";
 
-export enum Priority {
-    URGENT = "urgent",
-    NORMAL = "normal",
-    LOW = "low",
-}
+import Priority from "@/shared/lib/Priority";
 
 export default class TodoItem {
     constructor(
@@ -23,7 +19,7 @@ export default class TodoItem {
             content: Yup.string()
                 .max(1024, "내용은 최대 1024자입니다.")
                 .required("비밀번호는 필수입니다."),
-            priority: Yup.string().oneOf(["urgent" , "normal" , "low"]).optional(),
+            priority: Yup.string().oneOf(["urgent", "normal", "low"]).optional(),
         })
         .noUnknown(true);
 }
