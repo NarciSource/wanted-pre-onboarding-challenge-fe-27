@@ -4,4 +4,5 @@ export default interface TodoResponseDTO {
     id: string;
     createdAt: string;
     updatedAt: string;
+    priority: string;
 }
