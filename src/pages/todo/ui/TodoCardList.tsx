@@ -16,6 +16,7 @@ export default function TodoCardList(): React.ReactElement {
     const [options, setOptions] = useState<{
         sort: "createdAt" | "updatedAt" | "priority";
         order: "asc" | "desc";
+        priorityFilter?: "urgent" | "normal" | "low";
     }>({
         sort: "createdAt",
         order: "asc",
