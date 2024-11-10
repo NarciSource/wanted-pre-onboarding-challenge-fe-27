@@ -6,11 +6,13 @@ import { HStack, Icon } from "@chakra-ui/react";
 import TodoFilterOption from "./TodoFilterOption";
 import TodoOrderOption from "./TodoOrderOption";
 import TodoSortOption from "./TodoSortOption";
+import TodoKeywordOption from "./TodoKeywordOption";
 
 type Options = {
     sort: "createdAt" | "updatedAt" | "priority";
     order: "asc" | "desc";
     priorityFilter?: "urgent" | "normal" | "low";
+    keyword?: string;
 };
 
 export default function TodoPageOptions({
@@ -28,7 +30,7 @@ export default function TodoPageOptions({
     };
 
     return (
-        <HStack justify="center">
+        <HStack justify="center" mb={5}>
             <TodoSortOption sort={options.sort} handleOptionChange={handleOptionChange} />
             <Icon color="grey" mx={7}>
                 <RxDividerVertical />
@@ -43,6 +45,11 @@ export default function TodoPageOptions({
                 priorityFilter={options.priorityFilter}
                 handleOptionChange={handleOptionChange}
             />
+            <Icon color="grey" mx={7}>
+                <RxDividerVertical />
+            </Icon>
+
+            <TodoKeywordOption handleOptionChange={handleOptionChange} />
         </HStack>
     );
 }
