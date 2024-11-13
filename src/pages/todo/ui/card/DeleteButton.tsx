@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { IconButton } from "@chakra-ui/react";
 import { MdDelete } from "react-icons/md";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { toaster } from "@/widgets/chakra-ui/toaster";
+import { toaster } from "@/shared/chakra-ui/toaster";
 
 import TodoError from "@/features/todo/model/Error";
 import removeTodo from "@/features/todo/services/removeTodo";

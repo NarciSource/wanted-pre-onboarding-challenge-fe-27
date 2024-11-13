@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { toaster } from "@/widgets/chakra-ui/toaster";
+import { toaster } from "@/shared/chakra-ui/toaster";
 
 import TodoItem from "@/entities/TodoItem";
 import TodoUpdateRequestDTO from "../model/request/UpdateRequestDTO";

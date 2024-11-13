@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Flex, Box } from "@chakra-ui/react";
-import { useColorModeValue } from "@/widgets/chakra-ui/color-mode";
+import { useColorModeValue } from "@/shared/chakra-ui/color-mode";
 
 import LoginFormLayout from "@/features/auth/ui/LoginFormLayout";
 import SignUpFormLayout from "@/features/auth/ui/SignUpFormLayout";

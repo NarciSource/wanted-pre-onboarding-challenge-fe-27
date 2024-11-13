@@ -3,7 +3,7 @@ import { IoOptions } from "react-icons/io5";
 import { AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai";
 
 import { HStack, Text } from "@chakra-ui/react";
-import { Radio, RadioGroup } from "@/widgets/chakra-ui/radio";
+import { Radio, RadioGroup } from "@/shared/chakra-ui/radio";
 
 interface Parameters {
     order: "asc" | "desc";

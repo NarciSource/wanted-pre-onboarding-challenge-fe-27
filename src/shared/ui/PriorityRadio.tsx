@@ -1,7 +1,7 @@
 import { Control, FieldValues, Path, useController } from "react-hook-form";
 
 import { HStack } from "@chakra-ui/react";
-import { RadioCardItem, RadioCardRoot } from "@/widgets/chakra-ui/radio-card";
+import { RadioCardItem, RadioCardRoot } from "@/shared/chakra-ui/radio-card";
 
 export default function PriorityRadio<T extends FieldValues>({ control }: { control: Control<T> }) {
     // controlled 방식 특정 컴포넌트 제어

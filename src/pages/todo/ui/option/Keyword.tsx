@@ -1,7 +1,7 @@
 import React from "react";
 import { LuSearch } from "react-icons/lu";
 
-import { InputGroup } from "@/widgets/chakra-ui/input-group";
+import { InputGroup } from "@/shared/chakra-ui/input-group";
 import { Input } from "@chakra-ui/react";
 
 interface Parameters {

@@ -4,7 +4,7 @@ import { IoIosTime, IoMdFlag } from "react-icons/io";
 import { FiEdit3 } from "react-icons/fi";
 
 import { HStack, Text } from "@chakra-ui/react";
-import { Radio, RadioGroup } from "@/widgets/chakra-ui/radio";
+import { Radio, RadioGroup } from "@/shared/chakra-ui/radio";
 
 interface Parameters {
     sort: "createdAt" | "updatedAt" | "priority";

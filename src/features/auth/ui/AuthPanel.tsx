@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Stack, Button } from "@chakra-ui/react";
-import { useColorModeValue, ColorModeButton } from "@/widgets/chakra-ui/color-mode";
+import { useColorModeValue, ColorModeButton } from "@/shared/chakra-ui/color-mode";
 
 import LoginFormLayout from "./LoginFormLayout";
 import SignUpFormLayout from "./SignUpFormLayout";

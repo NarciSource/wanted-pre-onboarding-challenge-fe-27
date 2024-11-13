@@ -4,8 +4,8 @@ import { FaBell, FaFire } from "react-icons/fa6";
 import { RiZzzFill } from "react-icons/ri";
 
 import { HStack, Text } from "@chakra-ui/react";
-import { Radio, RadioGroup } from "@/widgets/chakra-ui/radio";
-import { Switch } from "@/widgets/chakra-ui/switch";
+import { Radio, RadioGroup } from "@/shared/chakra-ui/radio";
+import { Switch } from "@/shared/chakra-ui/switch";
 
 interface Parameters {
     priorityFilter: "urgent" | "normal" | "low" | undefined;

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Flex, IconButton, Input, Stack, Textarea } from "@chakra-ui/react";
-import { Field } from "@/widgets/chakra-ui/field";
+import { Field } from "@/shared/chakra-ui/field";
 import { FaPushed } from "react-icons/fa6";
 
 import TodoItem from "@/entities/TodoItem";

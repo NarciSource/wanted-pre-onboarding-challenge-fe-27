@@ -2,8 +2,8 @@ import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Input, Stack } from "@chakra-ui/react";
-import { Field } from "@/widgets/chakra-ui/field";
-import { PasswordInput } from "@/widgets/chakra-ui/password-input";
+import { Field } from "@/shared/chakra-ui/field";
+import { PasswordInput } from "@/shared/chakra-ui/password-input";
 
 import SignUpCredential from "@/entities/SignUpCredential";
 

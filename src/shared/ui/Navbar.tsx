@@ -2,7 +2,7 @@ import React from "react";
 
 import { Box, Flex, Link, Stack, Text } from "@chakra-ui/react";
 import { FcTodoList } from "react-icons/fc";
-import { useColorModeValue } from "@/widgets/chakra-ui/color-mode";
+import { useColorModeValue } from "@/shared/chakra-ui/color-mode";
 
 import ServerHealthCheck from "./ServerHealthCheck";
 
