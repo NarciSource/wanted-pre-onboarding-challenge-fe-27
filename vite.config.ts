@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
 
     return {
         plugins: [react()],
-        base: process.env.NODE_ENV === "development" ? process.env.VITE_PUBLIC_URL : "./",
+        base: process.env.VITE_PUBLIC_URL,
         resolve: {
             alias: {
                 "@": path.resolve(__dirname, "src"),
