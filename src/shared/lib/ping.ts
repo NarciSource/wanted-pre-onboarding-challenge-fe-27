@@ -12,7 +12,7 @@ export default async function ping(url: string): Promise<boolean> {
         await axios.get(url, { signal });
         return true;
     } catch (error) {
-        if ((error as AxiosError).code) {
+        if ((error as AxiosError).code !== "ERR_CANCELED") {
             return true;
         }
         return false;
